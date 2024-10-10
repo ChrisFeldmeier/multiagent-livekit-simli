@@ -1,0 +1,1855 @@
+% python main.py connect --room rv74-xlx0
+DEBUG:asyncio:Using selector: KqueueSelector
+2024-10-11 03:09:39,052 - DEBUG asyncio - Using selector: KqueueSelector 
+DEV:livekit.agents:Watching /Users/chris/Documents/apps/multi-agent-meeting/agent-1
+2024-10-11 03:09:39,053 - DEV  livekit.agents - Watching /Users/chris/Documents/apps/multi-agent-meeting/agent-1 
+DEBUG:asyncio:Using selector: KqueueSelector
+2024-10-11 03:09:40,475 - DEBUG asyncio - Using selector: KqueueSelector 
+INFO:livekit.agents:starting worker
+2024-10-11 03:09:40,481 - INFO livekit.agents - starting worker {"version": "0.10.0"}
+INFO:livekit.agents:registered worker
+2024-10-11 03:09:40,492 - INFO livekit.agents - registered worker {"id": "AW_LnAb4Rt9chHg", "server_info": "version: \"1.7.2\"\nprotocol: 14\nnode_id: \"ND_X6bjYBTbzpVP\"\nagent_protocol: 1\n"}
+INFO:livekit.agents:connecting to room rv74-xlx0
+2024-10-11 03:09:40,493 - INFO livekit.agents - connecting to room rv74-xlx0 
+INFO:livekit.agents:received job request
+2024-10-11 03:09:40,500 - INFO livekit.agents - received job request {"job_request": "id: \"AJ_ythStBKdtNjs\"\nroom {\n  sid: \"RM_2wj4KiCEp69u\"\n  name: \"rv74-xlx0\"\n  empty_timeout: 300\n  creation_time: 1728601780\n  turn_password: \"lqa1vSKYiKGkbSJiQGVP98RKv2neNKgGzu9ISerbjFC\"\n  enabled_codecs {\n    mime: \"audio/opus\"\n  }\n  enabled_codecs {\n    mime: \"audio/red\"\n  }\n  enabled_codecs {\n    mime: \"video/VP8\"\n  }\n  enabled_codecs {\n    mime: \"video/H264\"\n  }\n  enabled_codecs {\n    mime: \"video/VP9\"\n  }\n  enabled_codecs {\n    mime: \"video/AV1\"\n  }\n  departure_timeout: 20\n}\nagent_name: \"john\"\nstate {\n  updated_at: 1728601780500680000\n}\n", "resuming": false, "agent_name": "john"}
+DEBUG:asyncio:Using selector: KqueueSelector
+INFO:livekit.agents:initializing process
+DEBUG:asyncio:Using selector: KqueueSelector
+2024-10-11 03:09:41,902 - DEBUG asyncio - Using selector: KqueueSelector {"pid": 41973}
+INFO:livekit.agents:initializing process
+2024-10-11 03:09:41,903 - INFO livekit.agents - initializing process {"pid": 41973}
+INFO:livekit.agents:process initialized
+INFO:livekit.agents:process initialized
+2024-10-11 03:09:42,008 - INFO livekit.agents - process initialized {"pid": 41973}
+DEBUG:httpx:load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG:httpx:load_verify_locations cafile='/Users/chris/Documents/apps/multi-agent-meeting/agent-1/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
+INFO:livekit:livekit_ffi::server:134:livekit_ffi::server - initializing ffi server v0.11.3
+INFO:livekit:livekit_ffi::cabi:27:livekit_ffi::cabi - initializing ffi server v0.11.3
+INFO:livekit:livekit_api::signal_client::signal_stream:96:livekit_api::signal_client::signal_stream - connecting to ws://localhost:7880/rtc?sdk=rust&protocol=15&auto_subscribe=1&adaptive_stream=0&access_token=...
+DEBUG:livekit:tungstenite::handshake::client:95:tungstenite::handshake::client - Client handshake done.
+DEBUG:__mp_main__:Received session_token: gAAAAABnCF63T5Pr0L5WrtABI32i5xsDE_s6Z0CEAQOu2AoSVk4qhESKe4HQyqxLRAPoHYX9x5wTQH09-1SIlzdQGItWXSZMJNju42Jo915NhLUTauwWpJqW5Mj2ZJQS5IVs5LGfuf-7Ui680LxP5Qr5idt02_fJ3ABBFlJtfaikYW1nyVbMDzsx73LJDKj9TONkffXhhYoByWrHhg9Bo76epLEZ-ArvW1xdb25ZUWcaIfbzIwP3eSm4fJsOXGreJHOUN8UF1R9WEveVvrVSNVAMNq_2iTih1dvkBdwdEaJl_NvzlRS8yk6ejp1Jukp6H97ww1w0D6DbWFeM8toDLaT1wKa15DZ7rHhoy4_9o8y0ePgTfinzcPU9QI-dRN78Tlcv7B64AyXME3qmVQABfB3utIZ3gB0Gumo1ulgqP-e9AnsR0BfVH_ZaJ_o3IcC_KbckUCXcP2Zob1o_9MI2k5iQVGzeUN3Hp_cqPwtoHiffpiz_fdnmD9jytZtJ0ZtwHihLNCZ2M_d1p4Jo6VM4f_6YmPnovTmbOST4ZR1OBS0O1vXc7z7KCzA_BtlPHCz86WS6YKe9KA5DNO2kTfOfq_Lx6DYf3ZuEmQ==
+DEBUG:__mp_main__:Received session_token: gAAAAABnCF63T5Pr0L5WrtABI32i5xsDE_s6Z0CEAQOu2AoSVk4qhESKe4HQyqxLRAPoHYX9x5wTQH09-1SIlzdQGItWXSZMJNju42Jo915NhLUTauwWpJqW5Mj2ZJQS5IVs5LGfuf-7Ui680LxP5Qr5idt02_fJ3ABBFlJtfaikYW1nyVbMDzsx73LJDKj9TONkffXhhYoByWrHhg9Bo76epLEZ-ArvW1xdb25ZUWcaIfbzIwP3eSm4fJsOXGreJHOUN8UF1R9WEveVvrVSNVAMNq_2iTih1dvkBdwdEaJl_NvzlRS8yk6ejp1Jukp6H97ww1w0D6DbWFeM8toDLaT1wKa15DZ7rHhoy4_9o8y0ePgTfinzcPU9QI-dRN78Tlcv7B64AyXME3qmVQABfB3utIZ3gB0Gumo1ulgqP-e9AnsR0BfVH_ZaJ_o3IcC_KbckUCXcP2Zob1o_9MI2k5iQVGzeUN3Hp_cqPwtoHiffpiz_fdnmD9jytZtJ0ZtwHihLNCZ2M_d1p4Jo6VM4f_6YmPnovTmbOST4ZR1OBS0O1vXc7z7KCzA_BtlPHCz86WS6YKe9KA5DNO2kTfOfq_Lx6DYf3ZuEmQ==
+2024-10-11 03:09:43,734 - DEBUG __mp_main__ - Received session_token: gAAAAABnCF63T5Pr0L5WrtABI32i5xsDE_s6Z0CEAQOu2AoSVk4qhESKe4HQyqxLRAPoHYX9x5wTQH09-1SIlzdQGItWXSZMJNju42Jo915NhLUTauwWpJqW5Mj2ZJQS5IVs5LGfuf-7Ui680LxP5Qr5idt02_fJ3ABBFlJtfaikYW1nyVbMDzsx73LJDKj9TONkffXhhYoByWrHhg9Bo76epLEZ-ArvW1xdb25ZUWcaIfbzIwP3eSm4fJsOXGreJHOUN8UF1R9WEveVvrVSNVAMNq_2iTih1dvkBdwdEaJl_NvzlRS8yk6ejp1Jukp6H97ww1w0D6DbWFeM8toDLaT1wKa15DZ7rHhoy4_9o8y0ePgTfinzcPU9QI-dRN78Tlcv7B64AyXME3qmVQABfB3utIZ3gB0Gumo1ulgqP-e9AnsR0BfVH_ZaJ_o3IcC_KbckUCXcP2Zob1o_9MI2k5iQVGzeUN3Hp_cqPwtoHiffpiz_fdnmD9jytZtJ0ZtwHihLNCZ2M_d1p4Jo6VM4f_6YmPnovTmbOST4ZR1OBS0O1vXc7z7KCzA_BtlPHCz86WS6YKe9KA5DNO2kTfOfq_Lx6DYf3ZuEmQ== {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:Creating transceivers with sendrecv directions
+DEBUG:__mp_main__:Audio transceiver with SilentAudioTrack successfully added
+DEBUG:__mp_main__:Creating transceivers with sendrecv directions
+2024-10-11 03:09:43,742 - DEBUG __mp_main__ - Creating transceivers with sendrecv directions {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:Audio transceiver with SilentAudioTrack successfully added
+2024-10-11 03:09:43,743 - DEBUG __mp_main__ - Audio transceiver with SilentAudioTrack successfully added {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:Video transceiver with BlackVideoTrack successfully added
+DEBUG:__mp_main__:Video transceiver with BlackVideoTrack successfully added
+2024-10-11 03:09:43,746 - DEBUG __mp_main__ - Video transceiver with BlackVideoTrack successfully added {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() setLocalDescription(offer)
+v=0
+o=- 3937590583 3937590583 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 9 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 0.0.0.0
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b 9c91f24f-a5d0-4242-850f-1daad7a4d13d
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:3872078269 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=ice-ufrag:cb5S
+a=ice-pwd:sKfa8Bi7fAcJMkDuHn4DUx
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=video 9 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 0.0.0.0
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b eef25fd8-55c8-48f4-8b4c-550cae41328b
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 3378221647 249096134
+a=ssrc:3378221647 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=ssrc:249096134 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=ice-ufrag:OeoJ
+a=ice-pwd:ALLGuurRiINHi54KTrkezF
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=application 9 DTLS/SCTP 5000
+c=IN IP4 0.0.0.0
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=ice-ufrag:Ykol
+a=ice-pwd:MOHEfcoAB9vKqXZYQrOcH4
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() iceGatheringState new -> gathering
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() setLocalDescription(offer)
+v=0
+o=- 3937590583 3937590583 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 9 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 0.0.0.0
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b 9c91f24f-a5d0-4242-850f-1daad7a4d13d
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:3872078269 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=ice-ufrag:cb5S
+a=ice-pwd:sKfa8Bi7fAcJMkDuHn4DUx
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=video 9 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 0.0.0.0
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b eef25fd8-55c8-48f4-8b4c-550cae41328b
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 3378221647 249096134
+a=ssrc:3378221647 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=ssrc:249096134 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=ice-ufrag:OeoJ
+a=ice-pwd:ALLGuurRiINHi54KTrkezF
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=application 9 DTLS/SCTP 5000
+c=IN IP4 0.0.0.0
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=ice-ufrag:Ykol
+a=ice-pwd:MOHEfcoAB9vKqXZYQrOcH4
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+
+2024-10-11 03:09:43,749 - DEBUG aiortc.rtcpeerconnection - RTCPeerConnection() setLocalDescription(offer)
+v=0
+o=- 3937590583 3937590583 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 9 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 0.0.0.0
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b 9c91f24f-a5d0-4242-850f-1daad7a4d13d
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:3872078269 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=ice-ufrag:cb5S
+a=ice-pwd:sKfa8Bi7fAcJMkDuHn4DUx
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=video 9 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 0.0.0.0
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b eef25fd8-55c8-48f4-8b4c-550cae41328b
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 3378221647 249096134
+a=ssrc:3378221647 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=ssrc:249096134 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=ice-ufrag:OeoJ
+a=ice-pwd:ALLGuurRiINHi54KTrkezF
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=application 9 DTLS/SCTP 5000
+c=IN IP4 0.0.0.0
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=ice-ufrag:Ykol
+a=ice-pwd:MOHEfcoAB9vKqXZYQrOcH4
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+ {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() iceGatheringState new -> gathering
+2024-10-11 03:09:43,750 - DEBUG aiortc.rtcpeerconnection - RTCPeerConnection() iceGatheringState new -> gathering {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) connection_made(<_SelectorDatagramTransport fd=32 read=idle write=<idle, bufsize=0>>)
+DEBUG:aioice.ice:Connection(2) protocol(1) connection_made(<_SelectorDatagramTransport fd=33 read=idle write=<idle, bufsize=0>>)
+DEBUG:aioice.ice:Connection(0) protocol(2) connection_made(<_SelectorDatagramTransport fd=34 read=idle write=<idle, bufsize=0>>)
+DEBUG:aioice.ice:Connection(1) protocol(0) connection_made(<_SelectorDatagramTransport fd=32 read=idle write=<idle, bufsize=0>>)
+2024-10-11 03:09:43,757 - DEBUG aioice.ice - Connection(1) protocol(0) connection_made(<_SelectorDatagramTransport fd=32 read=idle write=<idle, bufsize=0>>) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(2) protocol(1) connection_made(<_SelectorDatagramTransport fd=33 read=idle write=<idle, bufsize=0>>)
+2024-10-11 03:09:43,757 - DEBUG aioice.ice - Connection(2) protocol(1) connection_made(<_SelectorDatagramTransport fd=33 read=idle write=<idle, bufsize=0>>) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(0) protocol(2) connection_made(<_SelectorDatagramTransport fd=34 read=idle write=<idle, bufsize=0>>)
+2024-10-11 03:09:43,758 - DEBUG aioice.ice - Connection(0) protocol(2) connection_made(<_SelectorDatagramTransport fd=34 read=idle write=<idle, bufsize=0>>) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(2) protocol(1) > ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\xe6\x0fU4\xa71\x12M\xa1\xd9X\x89')
+DEBUG:aioice.ice:Connection(2) protocol(1) > ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\xe6\x0fU4\xa71\x12M\xa1\xd9X\x89')
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'(\xa6\x81\xf8\xce\x8d\xb0\xf8\x1d+[4')
+2024-10-11 03:09:43,760 - DEBUG aioice.ice - Connection(2) protocol(1) > ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\xe6\x0fU4\xa71\x12M\xa1\xd9X\x89') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(0) protocol(2) > ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\xd2\x99\xc8;\xd1\x82\xe0g\xc0\x9b\xe6\x02')
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'(\xa6\x81\xf8\xce\x8d\xb0\xf8\x1d+[4')
+2024-10-11 03:09:43,761 - DEBUG aioice.ice - Connection(1) protocol(0) > ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'(\xa6\x81\xf8\xce\x8d\xb0\xf8\x1d+[4') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(0) protocol(2) > ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\xd2\x99\xc8;\xd1\x82\xe0g\xc0\x9b\xe6\x02')
+2024-10-11 03:09:43,761 - DEBUG aioice.ice - Connection(0) protocol(2) > ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\xd2\x99\xc8;\xd1\x82\xe0g\xc0\x9b\xe6\x02') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(2) protocol(1) < ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\xe6\x0fU4\xa71\x12M\xa1\xd9X\x89')
+DEBUG:aioice.ice:Connection(2) protocol(1) < ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\xe6\x0fU4\xa71\x12M\xa1\xd9X\x89')
+2024-10-11 03:09:43,770 - DEBUG aioice.ice - Connection(2) protocol(1) < ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\xe6\x0fU4\xa71\x12M\xa1\xd9X\x89') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(0) protocol(2) < ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\xd2\x99\xc8;\xd1\x82\xe0g\xc0\x9b\xe6\x02')
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'(\xa6\x81\xf8\xce\x8d\xb0\xf8\x1d+[4')
+DEBUG:aioice.ice:Connection(0) protocol(2) < ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\xd2\x99\xc8;\xd1\x82\xe0g\xc0\x9b\xe6\x02')
+2024-10-11 03:09:43,772 - DEBUG aioice.ice - Connection(0) protocol(2) < ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\xd2\x99\xc8;\xd1\x82\xe0g\xc0\x9b\xe6\x02') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'(\xa6\x81\xf8\xce\x8d\xb0\xf8\x1d+[4')
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() iceGatheringState gathering -> complete
+2024-10-11 03:09:43,772 - DEBUG aioice.ice - Connection(1) protocol(0) < ('74.125.250.129', 19302) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'(\xa6\x81\xf8\xce\x8d\xb0\xf8\x1d+[4') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() iceGatheringState gathering -> complete
+2024-10-11 03:09:43,773 - DEBUG aiortc.rtcpeerconnection - RTCPeerConnection() iceGatheringState gathering -> complete {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:Local SDP offer:
+v=0
+o=- 3937590583 3937590583 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 58051 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b 9c91f24f-a5d0-4242-850f-1daad7a4d13d
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:3872078269 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 58051 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 58051 typ srflx raddr 192.168.1.144 rport 58051
+a=end-of-candidates
+a=ice-ufrag:cb5S
+a=ice-pwd:sKfa8Bi7fAcJMkDuHn4DUx
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=video 51101 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b eef25fd8-55c8-48f4-8b4c-550cae41328b
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 3378221647 249096134
+a=ssrc:3378221647 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=ssrc:249096134 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 51101 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 51101 typ srflx raddr 192.168.1.144 rport 51101
+a=end-of-candidates
+a=ice-ufrag:OeoJ
+a=ice-pwd:ALLGuurRiINHi54KTrkezF
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=application 55186 DTLS/SCTP 5000
+c=IN IP4 192.168.1.144
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 55186 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 55186 typ srflx raddr 192.168.1.144 rport 55186
+a=end-of-candidates
+a=ice-ufrag:Ykol
+a=ice-pwd:MOHEfcoAB9vKqXZYQrOcH4
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+
+INFO:__mp_main__:ICE gathering complete
+DEBUG:__mp_main__:Local SDP offer:
+v=0
+o=- 3937590583 3937590583 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 58051 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b 9c91f24f-a5d0-4242-850f-1daad7a4d13d
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:3872078269 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 58051 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 58051 typ srflx raddr 192.168.1.144 rport 58051
+a=end-of-candidates
+a=ice-ufrag:cb5S
+a=ice-pwd:sKfa8Bi7fAcJMkDuHn4DUx
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=video 51101 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b eef25fd8-55c8-48f4-8b4c-550cae41328b
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 3378221647 249096134
+a=ssrc:3378221647 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=ssrc:249096134 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 51101 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 51101 typ srflx raddr 192.168.1.144 rport 51101
+a=end-of-candidates
+a=ice-ufrag:OeoJ
+a=ice-pwd:ALLGuurRiINHi54KTrkezF
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=application 55186 DTLS/SCTP 5000
+c=IN IP4 192.168.1.144
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 55186 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 55186 typ srflx raddr 192.168.1.144 rport 55186
+a=end-of-candidates
+a=ice-ufrag:Ykol
+a=ice-pwd:MOHEfcoAB9vKqXZYQrOcH4
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+
+DEBUG:__mp_main__:Local SDP offer:
+v=0
+o=- 3937590583 3937590583 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 58051 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b 9c91f24f-a5d0-4242-850f-1daad7a4d13d
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:3872078269 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 58051 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 58051 typ srflx raddr 192.168.1.144 rport 58051
+a=end-of-candidates
+a=ice-ufrag:cb5S
+a=ice-pwd:sKfa8Bi7fAcJMkDuHn4DUx
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=video 51101 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b eef25fd8-55c8-48f4-8b4c-550cae41328b
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 3378221647 249096134
+a=ssrc:3378221647 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=ssrc:249096134 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 51101 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 51101 typ srflx raddr 192.168.1.144 rport 51101
+a=end-of-candidates
+a=ice-ufrag:OeoJ
+a=ice-pwd:ALLGuurRiINHi54KTrkezF
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=application 55186 DTLS/SCTP 5000
+c=IN IP4 192.168.1.144
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 55186 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 55186 typ srflx raddr 192.168.1.144 rport 55186
+a=end-of-candidates
+a=ice-ufrag:Ykol
+a=ice-pwd:MOHEfcoAB9vKqXZYQrOcH4
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+
+2024-10-11 03:09:43,773 - DEBUG __mp_main__ - Local SDP offer:
+v=0
+o=- 3937590583 3937590583 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 58051 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b 9c91f24f-a5d0-4242-850f-1daad7a4d13d
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:3872078269 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 58051 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 58051 typ srflx raddr 192.168.1.144 rport 58051
+a=end-of-candidates
+a=ice-ufrag:cb5S
+a=ice-pwd:sKfa8Bi7fAcJMkDuHn4DUx
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=video 51101 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b eef25fd8-55c8-48f4-8b4c-550cae41328b
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 3378221647 249096134
+a=ssrc:3378221647 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=ssrc:249096134 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 51101 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 51101 typ srflx raddr 192.168.1.144 rport 51101
+a=end-of-candidates
+a=ice-ufrag:OeoJ
+a=ice-pwd:ALLGuurRiINHi54KTrkezF
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=application 55186 DTLS/SCTP 5000
+c=IN IP4 192.168.1.144
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 55186 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 55186 typ srflx raddr 192.168.1.144 rport 55186
+a=end-of-candidates
+a=ice-ufrag:Ykol
+a=ice-pwd:MOHEfcoAB9vKqXZYQrOcH4
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+ {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:ICE gathering complete
+2024-10-11 03:09:43,773 - INFO __mp_main__ - ICE gathering complete {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:Local SDP offer:
+v=0
+o=- 3937590583 3937590583 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 58051 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b 9c91f24f-a5d0-4242-850f-1daad7a4d13d
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:3872078269 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 58051 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 58051 typ srflx raddr 192.168.1.144 rport 58051
+a=end-of-candidates
+a=ice-ufrag:cb5S
+a=ice-pwd:sKfa8Bi7fAcJMkDuHn4DUx
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=video 51101 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b eef25fd8-55c8-48f4-8b4c-550cae41328b
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 3378221647 249096134
+a=ssrc:3378221647 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=ssrc:249096134 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 51101 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 51101 typ srflx raddr 192.168.1.144 rport 51101
+a=end-of-candidates
+a=ice-ufrag:OeoJ
+a=ice-pwd:ALLGuurRiINHi54KTrkezF
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=application 55186 DTLS/SCTP 5000
+c=IN IP4 192.168.1.144
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 55186 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 55186 typ srflx raddr 192.168.1.144 rport 55186
+a=end-of-candidates
+a=ice-ufrag:Ykol
+a=ice-pwd:MOHEfcoAB9vKqXZYQrOcH4
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+
+2024-10-11 03:09:43,774 - DEBUG __mp_main__ - Local SDP offer:
+v=0
+o=- 3937590583 3937590583 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 58051 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b 9c91f24f-a5d0-4242-850f-1daad7a4d13d
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:3872078269 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 58051 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 58051 typ srflx raddr 192.168.1.144 rport 58051
+a=end-of-candidates
+a=ice-ufrag:cb5S
+a=ice-pwd:sKfa8Bi7fAcJMkDuHn4DUx
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=video 51101 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 192.168.1.144
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:9cf517cd-a6ce-4b34-bf1f-eb29ffed1d2b eef25fd8-55c8-48f4-8b4c-550cae41328b
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 3378221647 249096134
+a=ssrc:3378221647 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=ssrc:249096134 cname:587a2345-8461-47e8-8187-55331f88eca3
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 51101 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 51101 typ srflx raddr 192.168.1.144 rport 51101
+a=end-of-candidates
+a=ice-ufrag:OeoJ
+a=ice-pwd:ALLGuurRiINHi54KTrkezF
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+m=application 55186 DTLS/SCTP 5000
+c=IN IP4 192.168.1.144
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:764722a36cd12cad72df57da82ee6272 1 udp 2130706431 192.168.1.144 55186 typ host
+a=candidate:0131328f261a7941f0e62907deb42785 1 udp 1694498815 5.30.211.154 55186 typ srflx raddr 192.168.1.144 rport 55186
+a=end-of-candidates
+a=ice-ufrag:Ykol
+a=ice-pwd:MOHEfcoAB9vKqXZYQrOcH4
+a=fingerprint:sha-256 F2:56:FA:D0:BF:BE:7A:50:40:59:00:F7:38:60:47:ED:0E:FB:97:8C:9F:1F:88:C0:27:AB:D0:BC:BF:4F:20:18
+a=setup:actpass
+ {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:Received answer SDP:
+v=0
+o=- 3937590584 3937590584 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 48752 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 848838ae-5313-4221-8a55-7bb00e6e9863
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:949993829 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=video 48752 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 4cd3545b-3a91-4efa-adb0-f974c666b1b9
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 4015963533 2502776007
+a=ssrc:4015963533 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=ssrc:2502776007 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=application 48752 DTLS/SCTP 5000
+c=IN IP4 10.164.0.121
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+
+DEBUG:__mp_main__:Received answer SDP:
+v=0
+o=- 3937590584 3937590584 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 48752 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 848838ae-5313-4221-8a55-7bb00e6e9863
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:949993829 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() setRemoteDescription(answer)
+v=0
+o=- 3937590584 3937590584 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 48752 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 848838ae-5313-4221-8a55-7bb00e6e9863
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:949993829 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 474
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=video 48752 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 4cd3545b-3a91-4efa-adb0-f974c666b1b9
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 4015963533 2502776007
+a=ssrc:4015963533 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=ssrc:2502776007 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=application 48752 DTLS/SCTP 5000
+c=IN IP4 10.164.0.121
+a=mid:2
+a=sctpmap:5000 webrtc-da93 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=video 48752 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 4cd3545b-3a91-4efa-adb0-f974c666b1b9
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 4015963533 2502776007
+a=ssrc:4015963533 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=ssrc:2502776007 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=application 48752 DTLS/SCTP 5000
+c=IN IP4 10.164.0.121
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+
+tachannel 65535
+a=max-message-size:65536
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+
+2024-10-11 03:09:44,205 - DEBUG __mp_main__ - Received answer SDP:
+v=0
+o=- 3937590584 3937590584 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 48752 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 848838ae-5313-4221-8a55-7bb00e6e9863
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:949993829 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=video 48752 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 4cd3545b-3a91-4efa-adb0-f974c666b1b9
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 4015963533 2502776007
+a=ssrc:4015963533 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=ssrc:2502776007 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=application 48752 DTLS/SCTP 5000
+c=IN IP4 10.164.0.121
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+ {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcicetransport:RTCIceTransport(controlling) - new -> closed
+DEBUG:aioice.ice:Connection(0) protocol(2) connection_lost(None)
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() setRemoteDescription(answer)
+v=0
+o=- 3937590584 3937590584 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 48752 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 848838ae-5313-4221-8a55-7bb00e6e9863
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:949993829 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=video 48752 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 4cd3545b-3a91-4efa-adb0-f974c666b1b9
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 4015963533 2502776007
+a=ssrc:4015963533 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=ssrc:2502776007 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setDEBUG:aiortc.rtcicetransport:RTCIceTransport(controlling) - new -> closed
+up:active
+m=application 48752 DTLS/SCTP 5000
+c=IN IP4 10.164.0.121
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+
+2024-10-11 03:09:44,205 - DEBUG aiortc.rtcpeerconnection - RTCPeerConnection() setRemoteDescription(answer)
+v=0
+o=- 3937590584 3937590584 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 48752 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 848838ae-5313-4221-8a55-7bb00e6e9863
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:949993829 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=video 48752 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 4cd3545b-3a91-4efa-adb0-f974c666b1b9
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 4015963533 2502776007
+a=ssrc:4015963533 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=ssrc:2502776007 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=application 48752 DTLS/SCTP 5000
+c=IN IP4 10.164.0.121
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+ {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(2) protocol(1) connection_lost(None)
+DEBUG:aiortc.rtcicetransport:RTCIceTransport(controlling) - new -> closed
+2024-10-11 03:09:44,207 - DEBUG aiortc.rtcicetransport - RTCIceTransport(controlling) - new -> closed {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(0) protocol(2) connection_lost(None)
+2024-10-11 03:09:44,207 - DEBUG aioice.ice - Connection(0) protocol(2) connection_lost(None) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcicetransport:RTCIceTransport(controlling) - new -> closed
+2024-10-11 03:09:44,207 - DEBUG aiortc.rtcicetransport - RTCIceTransport(controlling) - new -> closed {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(2) protocol(1) connection_lost(None)
+2024-10-11 03:09:44,208 - DEBUG aioice.ice - Connection(2) protocol(1) connection_lost(None) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:Track audio received
+DEBUG:__mp_main__:Track Details: <aiortc.rtcrtpreceiver.RemoteStreamTrack object at 0x12ee22090>
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Create proxy 5081907520 for source 5081538704
+INFO:__mp_main__:Track audio received
+DEBUG:__mp_main__:Successfully subscribed to audio track
+2024-10-11 03:09:44,208 - INFO __mp_main__ - Track audio received {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:Track Details: <aiortc.rtcrtpreceiver.RemoteStreamTrack object at 0x12ee22090>
+DEBUG:__mp_main__:AudioSource for LiveKit created
+2024-10-11 03:09:44,208 - DEBUG __mp_main__ - Track Details: <aiortc.rtcrtpreceiver.RemoteStreamTrack object at 0x12ee22090> {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:forward_audio task started
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Create proxy 5081907520 for source 5081538704
+2024-10-11 03:09:44,209 - DEBUG aiortc.contrib.media - MediaRelay(5081536160) Create proxy 5081907520 for source 5081538704 {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:Successfully subscribed to audio track
+2024-10-11 03:09:44,209 - DEBUG __mp_main__ - Successfully subscribed to audio track {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:AudioSource for LiveKit created
+2024-10-11 03:09:44,209 - DEBUG __mp_main__ - AudioSource for LiveKit created {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:LocalAudioTrack successfully created
+DEBUG:__mp_main__:forward_audio task started
+2024-10-11 03:09:44,209 - DEBUG __mp_main__ - forward_audio task started {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:publish_audio_track task started
+INFO:__mp_main__:Track video received
+DEBUG:__mp_main__:LocalAudioTrack successfully created
+DEBUG:__mp_main__:Track Details: <aiortc.rtcrtpreceiver.RemoteStreamTrack object at 0x12ee5c680>
+2024-10-11 03:09:44,209 - DEBUG __mp_main__ - LocalAudioTrack successfully created {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:publish_audio_track task started
+2024-10-11 03:09:44,209 - DEBUG __mp_main__ - publish_audio_track task started {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Create proxy 5081908864 for source 5081777792
+DEBUG:__mp_main__:Successfully subscribed to video track
+INFO:__mp_main__:Track video received
+2024-10-11 03:09:44,210 - INFO __mp_main__ - Track video received {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:Track Details: <aiortc.rtcrtpreceiver.RemoteStreamTrack object at 0x12ee5c680>
+2024-10-11 03:09:44,210 - DEBUG __mp_main__ - Track Details: <aiortc.rtcrtpreceiver.RemoteStreamTrack object at 0x12ee5c680> {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:VideoSource for LiveKit created
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Create proxy 5081908864 for source 5081777792
+DEBUG:__mp_main__:forward_frames task started
+2024-10-11 03:09:44,210 - DEBUG aiortc.contrib.media - MediaRelay(5081536160) Create proxy 5081908864 for source 5081777792 {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:Successfully subscribed to video track
+2024-10-11 03:09:44,210 - DEBUG __mp_main__ - Successfully subscribed to video track {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:VideoSource for LiveKit created
+2024-10-11 03:09:44,210 - DEBUG __mp_main__ - VideoSource for LiveKit created {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:LocalVideoTrack successfully created
+DEBUG:__mp_main__:forward_frames task started
+2024-10-11 03:09:44,210 - DEBUG __mp_main__ - forward_frames task started {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:publish_video_track task started
+INFO:__mp_main__:Remote SDP answer:
+v=0
+o=- 3937590584 3937590584 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 48752 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 848838ae-5313-4221-8a55-7bb00e6e9863
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:949993829 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=video 48752 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 4cd3545b-3a91-4efa-adb0-f974c666b1b9
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 4015963533 2502776007
+a=ssrc:4015963533 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=ssrc:2502776007 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=application 48752 DTLS/SCTP 5000
+c=IN IP4 10.164.0.121
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+
+DEBUG:__mp_main__:LocalVideoTrack successfully created
+2024-10-11 03:09:44,211 - DEBUG __mp_main__ - LocalVideoTrack successfully created {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:publish_video_track task started
+DEBUG:__mp_main__:Starting forward_audio loop
+2024-10-11 03:09:44,211 - DEBUG __mp_main__ - publish_video_track task started {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:Remote SDP answer:
+v=0
+o=- 3937590584 3937590584 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 48752 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 848838ae-5313-4221-8a55-7bb00e6e9863
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:949993829 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=video 48752 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 4cd3545b-3a91-4efa-adb0-f974c666b1b9
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 4015963533 2502776007
+a=ssrc:4015963533 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=ssrc:2502776007 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=application 48752 DTLS/SCTP 5000
+c=IN IP4 10.164.0.121
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Start proxy 5081907520
+2024-10-11 03:09:44,211 - INFO __mp_main__ - Remote SDP answer:
+v=0
+o=- 3937590584 3937590584 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0 1 2
+a=msid-semantic:WMS *
+m=audio 48752 UDP/TLS/RTP/SAVPF 96 0 8
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:2 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:0
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 848838ae-5313-4221-8a55-7bb00e6e9863
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:949993829 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:96 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=video 48752 UDP/TLS/RTP/SAVPF 97 98 99 100 101 102
+c=IN IP4 10.164.0.121
+a=sendonly
+a=extmap:1 urn:ietf:params:rtp-hdrext:sdes:mid
+a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+a=mid:1
+a=msid:b1ac294c-08cb-4157-b5fe-27c9a057f065 4cd3545b-3a91-4efa-adb0-f974c666b1b9
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc-group:FID 4015963533 2502776007
+a=ssrc:4015963533 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=ssrc:2502776007 cname:62ef6725-0ab5-4043-b399-ad6c4a547b7c
+a=rtpmap:97 VP8/90000
+a=rtcp-fb:97 nack
+a=rtcp-fb:97 nack pli
+a=rtcp-fb:97 goog-remb
+a=rtpmap:98 rtx/90000
+a=fmtp:98 apt=97
+a=rtpmap:99 H264/90000
+a=rtcp-fb:99 nack
+a=rtcp-fb:99 nack pli
+a=rtcp-fb:99 goog-remb
+a=fmtp:99 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f
+a=rtpmap:100 rtx/90000
+a=fmtp:100 apt=99
+a=rtpmap:101 H264/90000
+a=rtcp-fb:101 nack
+a=rtcp-fb:101 nack pli
+a=rtcp-fb:101 goog-remb
+a=fmtp:101 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f
+a=rtpmap:102 rtx/90000
+a=fmtp:102 apt=101
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+m=application 48752 DTLS/SCTP 5000
+c=IN IP4 10.164.0.121
+a=mid:2
+a=sctpmap:5000 webrtc-datachannel 65535
+a=max-message-size:65536
+a=candidate:a1025e9d48853d26acf23fe05c8db269 1 udp 2130706431 10.164.0.121 48752 typ host
+a=candidate:580b5f32035da7f14a30ea7a8d826c67 1 udp 2130706431 172.17.0.1 47493 typ host
+a=candidate:eb57cbc7b111c80be5c3ecfa53188135 1 udp 1694498815 34.32.139.6 48752 typ srflx raddr 10.164.0.121 rport 48752
+a=candidate:0ad8db753210ce9554cf251a9e51e792 1 udp 1694498815 34.32.139.6 47493 typ srflx raddr 172.17.0.1 rport 47493
+a=end-of-candidates
+a=ice-ufrag:5QRg
+a=ice-pwd:IUXjb279HQBAtmQKrHi5rS
+a=fingerprint:sha-256 73:34:ED:1E:38:97:FA:D6:7F:4D:91:4A:B1:2A:AA:B0:CB:B3:B0:6E:1B:D1:33:35:80:2E:58:A6:0D:CE:AA:9C
+a=setup:active
+ {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:Starting forward_frames loop
+DEBUG:__mp_main__:Starting forward_audio loop
+2024-10-11 03:09:44,211 - DEBUG __mp_main__ - Starting forward_audio loop {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:__mp_main__:Start forward_frames 
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Start proxy 5081907520
+2024-10-11 03:09:44,211 - DEBUG aiortc.contrib.media - MediaRelay(5081536160) Start proxy 5081907520 {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:Starting forward_frames loop
+2024-10-11 03:09:44,211 - INFO __mp_main__ - Starting forward_frames loop {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Start proxy 5081908864
+DEBUG:aiortc.rtcicetransport:RTCIceTransport(controlling) - new -> checking
+DEBUG:__mp_main__:Start forward_frames 
+2024-10-11 03:09:44,212 - DEBUG __mp_main__ - Start forward_frames  {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() iceConnectionState new -> checking
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() connectionState new -> connecting
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Start proxy 5081908864
+2024-10-11 03:09:44,212 - DEBUG aiortc.contrib.media - MediaRelay(5081536160) Start proxy 5081908864 {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('10.164.0.121', 48752)) State.FROZEN -> State.WAITING
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('172.17.0.1', 47493)) State.FROZEN -> State.WAITING
+DEBUG:aiortc.rtcicetransport:RTCIceTransport(controlling) - new -> checking
+2024-10-11 03:09:44,212 - DEBUG aiortc.rtcicetransport - RTCIceTransport(controlling) - new -> checking {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Start reading source 5081538704
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Start reading source 5081777792
+INFO:__mp_main__:ICE connection state is checking
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('10.164.0.121', 48752)) State.WAITING -> State.IN_PROGRESS
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() iceConnectionState new -> checking
+2024-10-11 03:09:44,213 - DEBUG aiortc.rtcpeerconnection - RTCPeerConnection() iceConnectionState new -> checking {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('10.164.0.121', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'Z\xc6o\xa8\xa4rF[\xdf\xd3\xf5\x92')
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() connectionState new -> connecting
+2024-10-11 03:09:44,213 - DEBUG aiortc.rtcpeerconnection - RTCPeerConnection() connectionState new -> connecting {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('10.164.0.121', 48752)) State.FROZEN -> State.WAITING
+2024-10-11 03:09:44,213 - INFO aioice.ice - Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('10.164.0.121', 48752)) State.FROZEN -> State.WAITING {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('172.17.0.1', 47493)) State.FROZEN -> State.WAITING
+2024-10-11 03:09:44,213 - INFO aioice.ice - Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('172.17.0.1', 47493)) State.FROZEN -> State.WAITING {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Start reading source 5081538704
+2024-10-11 03:09:44,214 - DEBUG aiortc.contrib.media - MediaRelay(5081536160) Start reading source 5081538704 {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.contrib.media:MediaRelay(5081536160) Start reading source 5081777792
+2024-10-11 03:09:44,214 - DEBUG aiortc.contrib.media - MediaRelay(5081536160) Start reading source 5081777792 {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:Simli audio track published
+INFO:__mp_main__:ICE connection state is checking
+2024-10-11 03:09:44,214 - INFO __mp_main__ - ICE connection state is checking {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('10.164.0.121', 48752)) State.WAITING -> State.IN_PROGRESS
+2024-10-11 03:09:44,214 - INFO aioice.ice - Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('10.164.0.121', 48752)) State.WAITING -> State.IN_PROGRESS {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('10.164.0.121', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'Z\xc6o\xa8\xa4rF[\xdf\xd3\xf5\x92')
+2024-10-11 03:09:44,215 - DEBUG aioice.ice - Connection(1) protocol(0) > ('10.164.0.121', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'Z\xc6o\xa8\xa4rF[\xdf\xd3\xf5\x92') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:Simli audio track published
+2024-10-11 03:09:44,216 - INFO __mp_main__ - Simli audio track published {"track_sid": "TR_AkXhksN7xjD7J", "pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:Simli video track published
+INFO:__mp_main__:Simli video track published
+2024-10-11 03:09:44,217 - INFO __mp_main__ - Simli video track published {"track_sid": "TR_VCuSMKoarDzeyo", "pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('172.17.0.1', 47493)) State.WAITING -> State.IN_PROGRESS
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('172.17.0.1', 47493) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\x1a\xca\xbe\xa4V,\xa1b\n\xfe\r\x93')
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('172.17.0.1', 47493)) State.WAITING -> State.IN_PROGRESS
+2024-10-11 03:09:44,234 - INFO aioice.ice - Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('172.17.0.1', 47493)) State.WAITING -> State.IN_PROGRESS {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('172.17.0.1', 47493) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\x1a\xca\xbe\xa4V,\xa1b\n\xfe\r\x93')
+2024-10-11 03:09:44,234 - DEBUG aioice.ice - Connection(1) protocol(0) > ('172.17.0.1', 47493) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\x1a\xca\xbe\xa4V,\xa1b\n\xfe\r\x93') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('34.32.139.6', 48752)) State.FROZEN -> State.IN_PROGRESS
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\xa3\xbdP1\xf9\xd4\nM\xa6\x9d\x03\xd6')
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('34.32.139.6', 48752)) State.FROZEN -> State.IN_PROGRESS
+2024-10-11 03:09:44,255 - INFO aioice.ice - Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('34.32.139.6', 48752)) State.FROZEN -> State.IN_PROGRESS {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\xa3\xbdP1\xf9\xd4\nM\xa6\x9d\x03\xd6')
+2024-10-11 03:09:44,256 - DEBUG aioice.ice - Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\xa3\xbdP1\xf9\xd4\nM\xa6\x9d\x03\xd6') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('34.32.139.6', 47493)) State.FROZEN -> State.IN_PROGRESS
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'b\xe6B\xb5\xaaa$\x16m\x0b\xec\x94')
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('34.32.139.6', 47493)) State.FROZEN -> State.IN_PROGRESS
+2024-10-11 03:09:44,277 - INFO aioice.ice - Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('34.32.139.6', 47493)) State.FROZEN -> State.IN_PROGRESS {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'b\xe6B\xb5\xaaa$\x16m\x0b\xec\x94')
+2024-10-11 03:09:44,277 - DEBUG aioice.ice - Connection(1) protocol(0) > ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'b\xe6B\xb5\xaaa$\x16m\x0b\xec\x94') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\xa3\xbdP1\xf9\xd4\nM\xa6\x9d\x03\xd6')
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('34.32.139.6', 48752)) State.IN_PROGRESS -> State.SUCCEEDED
+INFO:aioice.ice:Connection(1) ICE completed
+DEBUG:aiortc.rtcicetransport:RTCIceTransport(controlling) - checking -> completed
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\xa3\xbdP1\xf9\xd4\nM\xa6\x9d\x03\xd6')
+2024-10-11 03:09:44,382 - DEBUG aioice.ice - Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\xa3\xbdP1\xf9\xd4\nM\xa6\x9d\x03\xd6') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() iceConnectionState checking -> completed
+INFO:aioice.ice:Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('34.32.139.6', 48752)) State.IN_PROGRESS -> State.SUCCEEDED
+2024-10-11 03:09:44,382 - INFO aioice.ice - Connection(1) Check CandidatePair(('192.168.1.144', 58051) -> ('34.32.139.6', 48752)) State.IN_PROGRESS -> State.SUCCEEDED {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:aioice.ice:Connection(1) ICE completed
+2024-10-11 03:09:44,382 - INFO aioice.ice - Connection(1) ICE completed {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcicetransport:RTCIceTransport(controlling) - checking -> completed
+2024-10-11 03:09:44,383 - DEBUG aiortc.rtcicetransport - RTCIceTransport(controlling) - checking -> completed {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() iceConnectionState checking -> completed
+2024-10-11 03:09:44,383 - DEBUG aiortc.rtcpeerconnection - RTCPeerConnection() iceConnectionState checking -> completed {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcdtlstransport:RTCDtlsTransport(server) - State.NEW -> State.CONNECTING
+DEBUG:aiortc.rtcdtlstransport:RTCDtlsTransport(server) - State.NEW -> State.CONNECTING
+2024-10-11 03:09:44,384 - DEBUG aiortc.rtcdtlstransport - RTCDtlsTransport(server) - State.NEW -> State.CONNECTING {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:ICE connection state is completed
+INFO:__mp_main__:ICE connection completed
+INFO:__mp_main__:ICE connection state is completed
+2024-10-11 03:09:44,384 - INFO __mp_main__ - ICE connection state is completed {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:ICE connection completed
+2024-10-11 03:09:44,384 - INFO __mp_main__ - ICE connection completed {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'b\xe6B\xb5\xaaa$\x16m\x0b\xec\x94')
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'b\xe6B\xb5\xaaa$\x16m\x0b\xec\x94')
+2024-10-11 03:09:44,404 - DEBUG aioice.ice - Connection(1) protocol(0) < ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'b\xe6B\xb5\xaaa$\x16m\x0b\xec\x94') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'z-L\xbc\xcd\xb7\xaa\x1e\xf3\x12c\xe2')
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'z-L\xbc\xcd\xb7\xaa\x1e\xf3\x12c\xe2')
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'z-L\xbc\xcd\xb7\xaa\x1e\xf3\x12c\xe2')
+2024-10-11 03:09:44,741 - DEBUG aioice.ice - Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'z-L\xbc\xcd\xb7\xaa\x1e\xf3\x12c\xe2') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'z-L\xbc\xcd\xb7\xaa\x1e\xf3\x12c\xe2')
+2024-10-11 03:09:44,741 - DEBUG aioice.ice - Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'z-L\xbc\xcd\xb7\xaa\x1e\xf3\x12c\xe2') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'A\x1b\xc2*\x89\xaf\x93\x10\xdf\xd0$:')
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'A\x1b\xc2*\x89\xaf\x93\x10\xdf\xd0$:')
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'A\x1b\xc2*\x89\xaf\x93\x10\xdf\xd0$:')
+2024-10-11 03:09:44,763 - DEBUG aioice.ice - Connection(1) protocol(0) < ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'A\x1b\xc2*\x89\xaf\x93\x10\xdf\xd0$:') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'A\x1b\xc2*\x89\xaf\x93\x10\xdf\xd0$:')
+2024-10-11 03:09:44,763 - DEBUG aioice.ice - Connection(1) protocol(0) > ('34.32.139.6', 47493) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'A\x1b\xc2*\x89\xaf\x93\x10\xdf\xd0$:') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcdtlstransport:RTCDtlsTransport(server) x DTLS handshake negotiated SRTP_AEAD_AES_256_GCM
+DEBUG:aiortc.rtcdtlstransport:RTCDtlsTransport(server) - DTLS handshake complete
+DEBUG:aiortc.rtcdtlstransport:RTCDtlsTransport(server) - State.CONNECTING -> State.CONNECTED
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() connectionState connecting -> connected
+DEBUG:aiortc.rtcdtlstransport:RTCDtlsTransport(server) x DTLS handshake negotiated SRTP_AEAD_AES_256_GCM
+2024-10-11 03:09:44,998 - DEBUG aiortc.rtcdtlstransport - RTCDtlsTransport(server) x DTLS handshake negotiated SRTP_AEAD_AES_256_GCM {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > InitChunk(flags=0)
+DEBUG:aiortc.rtcdtlstransport:RTCDtlsTransport(server) - DTLS handshake complete
+2024-10-11 03:09:44,998 - DEBUG aiortc.rtcdtlstransport - RTCDtlsTransport(server) - DTLS handshake complete {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcdtlstransport:RTCDtlsTransport(server) - State.CONNECTING -> State.CONNECTED
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T1(InitChunk) start
+2024-10-11 03:09:44,998 - DEBUG aiortc.rtcdtlstransport - RTCDtlsTransport(server) - State.CONNECTING -> State.CONNECTED {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcpeerconnection:RTCPeerConnection() connectionState connecting -> connected
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - State.CLOSED -> State.COOKIE_WAIT
+2024-10-11 03:09:44,998 - DEBUG aiortc.rtcpeerconnection - RTCPeerConnection() connectionState connecting -> connected {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > InitChunk(flags=0)
+2024-10-11 03:09:44,999 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) > InitChunk(flags=0) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) - RTCP started
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) - RTCP started
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T1(InitChunk) start
+2024-10-11 03:09:45,000 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - T1(InitChunk) start {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - State.CLOSED -> State.COOKIE_WAIT
+2024-10-11 03:09:45,000 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - State.CLOSED -> State.COOKIE_WAIT {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) - RTCP started
+2024-10-11 03:09:45,000 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(audio) - RTCP started {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) - RTCP started
+2024-10-11 03:09:45,000 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(video) - RTCP started {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < InitAckChunk(flags=0)
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T1(InitChunk) cancel
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - Peer supports 65535 outbound streams, 65535 max inbound streams
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > CookieEchoChunk(flags=0)
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T1(CookieEchoChunk) start
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < InitAckChunk(flags=0)
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - State.COOKIE_WAIT -> State.COOKIE_ECHOED
+2024-10-11 03:09:45,126 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) < InitAckChunk(flags=0) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T1(InitChunk) cancel
+2024-10-11 03:09:45,127 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - T1(InitChunk) cancel {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - Peer supports 65535 outbound streams, 65535 max inbound streams
+2024-10-11 03:09:45,127 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - Peer supports 65535 outbound streams, 65535 max inbound streams {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > CookieEchoChunk(flags=0)
+2024-10-11 03:09:45,127 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) > CookieEchoChunk(flags=0) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T1(CookieEchoChunk) start
+2024-10-11 03:09:45,127 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - T1(CookieEchoChunk) start {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - State.COOKIE_WAIT -> State.COOKIE_ECHOED
+2024-10-11 03:09:45,127 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - State.COOKIE_WAIT -> State.COOKIE_ECHOED {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < CookieAckChunk(flags=0)
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T1(CookieEchoChunk) cancel
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - State.COOKIE_ECHOED -> State.ESTABLISHED
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < CookieAckChunk(flags=0)
+2024-10-11 03:09:45,254 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) < CookieAckChunk(flags=0) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T1(CookieEchoChunk) cancel
+2024-10-11 03:09:45,254 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - T1(CookieEchoChunk) cancel {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - State.COOKIE_ECHOED -> State.ESTABLISHED
+2024-10-11 03:09:45,255 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - State.COOKIE_ECHOED -> State.ESTABLISHED {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > DataChunk(flags=3, tsn=84275122, stream_id=1, stream_seq=0)
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T3 start
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > DataChunk(flags=3, tsn=84275122, stream_id=1, stream_seq=0)
+2024-10-11 03:09:45,255 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) > DataChunk(flags=3, tsn=84275122, stream_id=1, stream_seq=0) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T3 start
+2024-10-11 03:09:45,256 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - T3 start {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < DataChunk(flags=3, tsn=4085788829, stream_id=1, stream_seq=0)
+DEBUG:aiortc.rtcdatachannel:RTCDataChannel(1) - connecting -> open
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=4085788829, gaps=[])
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < DataChunk(flags=3, tsn=4085788829, stream_id=1, stream_seq=0)
+INFO:__mp_main__:DataChannel is open
+2024-10-11 03:09:45,381 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) < DataChunk(flags=3, tsn=4085788829, stream_id=1, stream_seq=0) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:Session token sent: gAAAAABnCF63T5Pr0L5WrtABI32i5xsDE_s6Z0CEAQOu2AoSVk4qhESKe4HQyqxLRAPoHYX9x5wTQH09-1SIlzdQGItWXSZMJNju42Jo915NhLUTauwWpJqW5Mj2ZJQS5IVs5LGfuf-7Ui680LxP5Qr5idt02_fJ3ABBFlJtfaikYW1nyVbMDzsx73LJDKj9TONkffXhhYoByWrHhg9Bo76epLEZ-ArvW1xdb25ZUWcaIfbzIwP3eSm4fJsOXGreJHOUN8UF1R9WEveVvrVSNVAMNq_2iTih1dvkBdwdEaJl_NvzlRS8yk6ejp1Jukp6H97ww1w0D6DbWFeM8toDLaT1wKa15DZ7rHhoy4_9o8y0ePgTfinzcPU9QI-dRN78Tlcv7B64AyXME3qmVQABfB3utIZ3gB0Gumo1ulgqP-e9AnsR0BfVH_ZaJ_o3IcC_KbckUCXcP2Zob1o_9MI2k5iQVGzeUN3Hp_cqPwtoHiffpiz_fdnmD9jytZtJ0ZtwHihLNCZ2M_d1p4Jo6VM4f_6YmPnovTmbOST4ZR1OBS0O1vXc7z7KCzA_BtlPHCz86WS6YKe9KA5DNO2kTfOfq_Lx6DYf3ZuEmQ==
+DEBUG:aiortc.rtcdatachannel:RTCDataChannel(1) - connecting -> open
+2024-10-11 03:09:45,381 - DEBUG aiortc.rtcdatachannel - RTCDataChannel(1) - connecting -> open {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=4085788829, gaps=[])
+2024-10-11 03:09:45,381 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) > SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=4085788829, gaps=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=84275122, gaps=[])
+INFO:__mp_main__:DataChannel is open
+2024-10-11 03:09:45,382 - INFO __mp_main__ - DataChannel is open {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T3 cancel
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > DataChunk(flags=3, tsn=84275123, stream_id=1, stream_seq=1)
+INFO:__mp_main__:Session token sent: gAAAAABnCF63T5Pr0L5WrtABI32i5xsDE_s6Z0CEAQOu2AoSVk4qhESKe4HQyqxLRAPoHYX9x5wTQH09-1SIlzdQGItWXSZMJNju42Jo915NhLUTauwWpJqW5Mj2ZJQS5IVs5LGfuf-7Ui680LxP5Qr5idt02_fJ3ABBFlJtfaikYW1nyVbMDzsx73LJDKj9TONkffXhhYoByWrHhg9Bo76epLEZ-ArvW1xdb25ZUWcaIfbzIwP3eSm4fJsOXGreJHOUN8UF1R9WEveVvrVSNVAMNq_2iTih1dvkBdwdEaJl_NvzlRS8yk6ejp1Jukp6H97ww1w0D6DbWFeM8toDLaT1wKa15DZ7rHhoy4_9o8y0ePgTfinzcPU9QI-dRN78Tlcv7B64AyXME3qmVQABfB3utIZ3gB0Gumo1ulgqP-e9AnsR0BfVH_ZaJ_o3IcC_KbckUCXcP2Zob1o_9MI2k5iQVGzeUN3Hp_cqPwtoHiffpiz_fdnmD9jytZtJ0ZtwHihLNCZ2M_d1p4Jo6VM4f_6YmPnovTmbOST4ZR1OBS0O1vXc7z7KCzA_BtlPHCz86WS6YKe9KA5DNO2kTfOfq_Lx6DYf3ZuEmQ==
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T3 start
+2024-10-11 03:09:45,382 - INFO __mp_main__ - Session token sent: gAAAAABnCF63T5Pr0L5WrtABI32i5xsDE_s6Z0CEAQOu2AoSVk4qhESKe4HQyqxLRAPoHYX9x5wTQH09-1SIlzdQGItWXSZMJNju42Jo915NhLUTauwWpJqW5Mj2ZJQS5IVs5LGfuf-7Ui680LxP5Qr5idt02_fJ3ABBFlJtfaikYW1nyVbMDzsx73LJDKj9TONkffXhhYoByWrHhg9Bo76epLEZ-ArvW1xdb25ZUWcaIfbzIwP3eSm4fJsOXGreJHOUN8UF1R9WEveVvrVSNVAMNq_2iTih1dvkBdwdEaJl_NvzlRS8yk6ejp1Jukp6H97ww1w0D6DbWFeM8toDLaT1wKa15DZ7rHhoy4_9o8y0ePgTfinzcPU9QI-dRN78Tlcv7B64AyXME3qmVQABfB3utIZ3gB0Gumo1ulgqP-e9AnsR0BfVH_ZaJ_o3IcC_KbckUCXcP2Zob1o_9MI2k5iQVGzeUN3Hp_cqPwtoHiffpiz_fdnmD9jytZtJ0ZtwHihLNCZ2M_d1p4Jo6VM4f_6YmPnovTmbOST4ZR1OBS0O1vXc7z7KCzA_BtlPHCz86WS6YKe9KA5DNO2kTfOfq_Lx6DYf3ZuEmQ== {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=84275122, gaps=[])
+2024-10-11 03:09:45,382 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) < SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=84275122, gaps=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T3 cancel
+2024-10-11 03:09:45,382 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - T3 cancel {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > DataChunk(flags=3, tsn=84275123, stream_id=1, stream_seq=1)
+2024-10-11 03:09:45,382 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) > DataChunk(flags=3, tsn=84275123, stream_id=1, stream_seq=1) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T3 start
+2024-10-11 03:09:45,383 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - T3 start {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=84275123, gaps=[])
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T3 cancel
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=84275123, gaps=[])
+2024-10-11 03:09:45,508 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) < SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=84275123, gaps=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) - T3 cancel
+2024-10-11 03:09:45,508 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) - T3 cancel {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < DataChunk(flags=3, tsn=4085788830, stream_id=1, stream_seq=1)
+INFO:__mp_main__:Message received on DataChannel: START
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=4085788830, gaps=[])
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) < DataChunk(flags=3, tsn=4085788830, stream_id=1, stream_seq=1)
+2024-10-11 03:09:45,810 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) < DataChunk(flags=3, tsn=4085788830, stream_id=1, stream_seq=1) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+INFO:__mp_main__:Message received on DataChannel: START
+2024-10-11 03:09:45,810 - INFO __mp_main__ - Message received on DataChannel: START {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcsctptransport:RTCSctpTransport(client) > SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=4085788830, gaps=[])
+2024-10-11 03:09:45,810 - DEBUG aiortc.rtcsctptransport - RTCSctpTransport(client) > SackChunk(flags=0, advertised_rwnd=1048576, cumulative_tsn=4085788830, gaps=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:46,333 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:46,351 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:47,104 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:47,570 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:48,424 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:48,504 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:49,373 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:49,544 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\x97-\xbbT\x9cc\xe1*\xaf\xc2\xba\xfc')
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\x97-\xbbT\x9cc\xe1*\xaf\xc2\xba\xfc')
+2024-10-11 03:09:50,084 - DEBUG aioice.ice - Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\x97-\xbbT\x9cc\xe1*\xaf\xc2\xba\xfc') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\x7f8\xc5\x0e\xefT\x14=\xc0a2\x0e')
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\x7f8\xc5\x0e\xefT\x14=\xc0a2\x0e')
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\x7f8\xc5\x0e\xefT\x14=\xc0a2\x0e')
+2024-10-11 03:09:50,181 - DEBUG aioice.ice - Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.REQUEST, transaction_id=b'\x7f8\xc5\x0e\xefT\x14=\xc0a2\x0e') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\x7f8\xc5\x0e\xefT\x14=\xc0a2\x0e')
+2024-10-11 03:09:50,182 - DEBUG aioice.ice - Connection(1) protocol(0) > ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\x7f8\xc5\x0e\xefT\x14=\xc0a2\x0e') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\x97-\xbbT\x9cc\xe1*\xaf\xc2\xba\xfc')
+DEBUG:aioice.ice:Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\x97-\xbbT\x9cc\xe1*\xaf\xc2\xba\xfc')
+2024-10-11 03:09:50,208 - DEBUG aioice.ice - Connection(1) protocol(0) < ('34.32.139.6', 48752) Message(message_method=Method.BINDING, message_class=Class.RESPONSE, transaction_id=b'\x97-\xbbT\x9cc\xe1*\xaf\xc2\xba\xfc') {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:50,232 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:50,918 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:51,085 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:52,145 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:52,360 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:53,064 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(audio) < RtcpSrPacket(ssrc=949993829, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+DEBUG:aiortc.rtcrtpreceiver:RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[])
+2024-10-11 03:09:53,166 - DEBUG aiortc.rtcrtpreceiver - RTCRtpReceiver(video) < RtcpSrPacket(ssrc=4015963533, sender_info=RtcpSenderInfo(ntp_timestamp=0, rtp_timestamp=0, packet_count=0, octet_count=0), reports=[]) {"pid": 41973, "job_id": "AJ_ythStBKdtNjs"}
+D
