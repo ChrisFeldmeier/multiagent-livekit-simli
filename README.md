@@ -20,6 +20,8 @@ Usually you'd run the agent(s) first and then start a session and the agent(s) w
 
 ❌ Avatar Video Picture is not working at the moment, got a green broken screen 🙁
 
+🪄 most of the magic is in the agent-1/main.py file
+
 
 ![Description of the image](/error.jpeg)
 
