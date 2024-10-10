@@ -20,7 +20,7 @@ Usually you'd run the agent(s) first and then start a session and the agent(s) w
 
 ❌ Avatar Video Picture is not working at the moment, got a green broken screen 🙁
 The error is in this line https://github.com/ChrisFeldmeier/multiagent-livekit-simli/blob/bd484069a200a20e9ce735bc979a500a0c2de5bf/agent-1/main.py#L212 where I don't receive any video frame from Simli. (but gather_ice, SDP.. and connections to Simli are successfull...)
-You can also the in the debug.log file my current debug log.
+The debug.log file in the root folder is the current debug log.
 
 🪄 most of the magic is in the agent-1/main.py file
 
