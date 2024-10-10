@@ -16,7 +16,9 @@ Usually you'd run the agent(s) first and then start a session and the agent(s) w
 
 ## Run first Agent (With Simli Avatar)
 
--> Avatar is not working at the moment, get a green broken screen :-(
+✅ Handling & Handshakes with Web RTC Implementation with Simli Avatar are working
+❌ Avatar Video Picture is not working at the moment, got a green broken screen 🙁
+
 
 ![Description of the image](/error.jpeg)
 
