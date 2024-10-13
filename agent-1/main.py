@@ -22,9 +22,10 @@ from aiortc import (
 from av import VideoFrame, AudioFrame
 from aiortc.contrib.media import MediaRelay
 from aiortc import MediaStreamTrack
-from aiortc.mediastreams import AudioStreamTrack
+from aiortc.mediastreams import AudioStreamTrack, VideoStreamTrack
 from dotenv import load_dotenv
 import cv2
+from scipy.signal import resample
 
 load_dotenv()
 
@@ -236,19 +237,31 @@ async def entrypoint(ctx: JobContext):
         # Important: Send something to Simli to receive audio & video data
         dc.send((0).to_bytes(1, "little") * 6000)
 
-# Just a Test here sending a local WAV file to the avatar -> choose the file format
-        file_path = "input-audio.wav" 
+        # Just a Test here sending a local WAV file to the avatar -> choose the file format
+        file_path = "input-audio-longer.wav" 
         # Ensure the file exists
         if not os.path.exists(file_path):
             logging.error(f"File {file_path} does not exist.")
         else:
-            # Open the file in binary mode
-            with open(file_path, 'rb') as audio_file:
-                audio_data = audio_file.read()
-            # Send the audio data in chunks
-            for i in range(0, len(audio_data), 6000):
-                dc.send(audio_data[i: i + 6000])
-                logging.info(f"Sent audio chunk {i // 6000 + 1}")
+            # Open the WAV file
+            with wave.open(file_path, 'rb') as wav_file:
+                # Check if the file is in PCM Int16 format
+                if wav_file.getsampwidth() != 2 or wav_file.getcomptype() != 'NONE':
+                    logging.error("The WAV file is not in PCM Int16 format.")
+                elif wav_file.getnchannels() != 1:
+                    logging.error("The WAV file is not mono.")
+                else:
+                    # Read the frames from the WAV file
+                    audio_data = wav_file.readframes(wav_file.getnframes())
+
+                    # Since the file is already mono, directly convert to bytes
+                    mono_audio_data = audio_data
+
+                    # Send the audio data in chunks
+                    for i in range(0, len(mono_audio_data), 6000):
+                        dc.send(mono_audio_data[i: i + 6000])
+                        logging.info(f"Sent audio chunk {i // 6000 + 1}")
+
         logger.info("Now receiving audio & video")
 
     @dc.on("message")
@@ -310,21 +323,18 @@ async def entrypoint(ctx: JobContext):
                             try:
                                 # Receiving the frame from Simli
                                 frame = await relayed_video.recv()
+                                frame = frame.to_rgb() #get direct the stream from frame
 
                                 if frame:
                                     logger.info(f"Video frame received from Simli: {frame.width}x{frame.height}")
 
-                                    # Convert the frame to an ndarray (YUV format)
-                                    ndarray_yuv = frame.to_ndarray(format="yuv420p")
+                                    # Assuming the frame is already in RGB format
+                                    ndarray_rgb = frame.to_ndarray(format="rgb24")
 
-                                    if ndarray_yuv is not None:
-                                        logger.debug(f"Frame-NDArray Shape (YUV): {ndarray_yuv.shape}")
-
-                                        # Convert YUV to RGB using OpenCV
-                                        ndarray_rgb = cv2.cvtColor(ndarray_yuv, cv2.COLOR_YUV2RGB_I420)
+                                    if ndarray_rgb is not None:
                                         logger.debug(f"Frame-NDArray Shape (RGB): {ndarray_rgb.shape}")
 
-                                        # Initialize the LiveKit VideoFrame (without 'buffer_type')
+                                        # Initialize the LiveKit VideoFrame with the RGB data
                                         livekit_frame = rtc.VideoFrame(
                                             width=frame.width,
                                             height=frame.height,
@@ -387,12 +397,14 @@ async def entrypoint(ctx: JobContext):
                 return
 
 
+            SAMPLE_RATE = 48000
+            NUM_CHANNELS = 1
+
             # Create an AudioSource for LiveKit
-            SAMPLE_RATE = 48000  # Adjust as needed
-            NUM_CHANNELS = 2
             audio_source = rtc.AudioSource(SAMPLE_RATE, NUM_CHANNELS)
             print("AudioSource for LiveKit created")
 
+        
             async def forward_audio(relayed_audio, audio_source):
                 while True:
                     try:
@@ -417,19 +429,19 @@ async def entrypoint(ctx: JobContext):
 
                                 # Read the raw audio data from the buffer as bytearray
                                 audio_data_ptr = ctypes.cast(audio_plane.buffer_ptr, ctypes.POINTER(ctypes.c_int16))
-                                audio_data = bytearray(ctypes.string_at(audio_data_ptr, audio_plane.buffer_size))
+                                audio_data = np.frombuffer(ctypes.string_at(audio_data_ptr, audio_plane.buffer_size), dtype=np.int16)
 
-                                # Ensure the audio data length matches the buffer size
-                                if len(audio_data) != audio_plane.buffer_size:
-                                    print("Warning: Audio data length does not match buffer size")
+                                # Convert stereo to mono by averaging the two channels
+                                if len(frame.layout.channels) == 2:
+                                    audio_data = audio_data.reshape(-1, 2)
+                                    mono_audio_data = audio_data.mean(axis=1).astype(np.int16)
+                                else:
+                                    mono_audio_data = audio_data
 
-                                # Create the LiveKit AudioFrame with the verified PCM data
-                                livekit_frame = rtc.AudioFrame(
-                                    data=audio_data,
-                                    sample_rate=frame.sample_rate,
-                                    num_channels=len(frame.layout.channels),
-                                    samples_per_channel=len(audio_data) // (2 * len(frame.layout.channels))
-                                )
+                                # Create the LiveKit AudioFrame with the PCM data
+                                samples_per_channel = len(mono_audio_data)
+                                livekit_frame = rtc.AudioFrame.create(SAMPLE_RATE, NUM_CHANNELS, samples_per_channel)
+                                np.copyto(np.frombuffer(livekit_frame.data, dtype=np.int16), mono_audio_data)
 
                                 # Send the frame to the LiveKit audio source    
                                 await audio_source.capture_frame(livekit_frame)
@@ -444,9 +456,6 @@ async def entrypoint(ctx: JobContext):
                         print(f"Error processing audio frame: {e}")
 
                     await asyncio.sleep(0)  # Yield control to the event loop
-
-
-
 
             task_forward_audio = asyncio.create_task(forward_audio(relayed_audio, audio_source))
 
@@ -463,7 +472,9 @@ async def entrypoint(ctx: JobContext):
             # Publish the audio track in the LiveKit room
             async def publish_audio_track():
                 try:
-                    publication = await room.local_participant.publish_track(livekit_audio_track)
+                    #options = rtc.TrackPublishOptions()
+                    #options.source = rtc.TrackSource.SOURCE_MICROPHONE
+                    publication = await room.local_participant.publish_track(livekit_audio_track) #,options
                     logger.info(
                         "Simli audio track published",
                         extra={"track_sid": publication.sid},
@@ -593,4 +604,3 @@ if __name__ == "__main__":
             agent_name="john", entrypoint_fnc=entrypoint, prewarm_fnc=prewarm, port=8082
         )
     )
-
