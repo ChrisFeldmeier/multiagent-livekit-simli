@@ -49,53 +49,75 @@ def prewarm(proc: JobProcess):
 
 class CustomSynthesizeStream(tts.SynthesizeStream):
     def __init__(self, opts, session):
-        super().__init__()  # Ensure proper initialization
+        # Adjust the constructor to match the parent class
+        super().__init__()
         self.opts = opts
         self.session = session
-        self._closed = False  # Track the closed state
-
-    def _check_not_closed(self):
-        """Check if the stream is closed and raise an error if it is."""
-        if self._closed:
-            raise RuntimeError(f"{self.__class__.__module__}.{self.__class__.__name__} is closed")
 
     async def _main_task(self):
-        """Implement the main task logic here."""
-        self._check_not_closed()
+        # Implement the main task logic here
         logging.info("Running _main_task in CustomSynthesizeStream")
-        await self.start_processing()
+        await super()._main_task()
 
-    async def start_processing(self):
-        """Start processing audio frames from the event channel."""
-        self._check_not_closed()
-        logging.info("Starting audio frame processing")
-        consumer_task = asyncio.create_task(self._consume_event_ch())
-        await consumer_task
+    async def _run_ws(self, ws: aiohttp.ClientWebSocketResponse):
+        request_id = uuid.uuid4().hex  # Generate a unique request ID
 
-    async def _consume_event_ch(self):
-        """Consume and process audio frames from the event channel."""
-        logging.info(f"Next Start Processing audio")
-        audio_event = await self._event_ch.get()
-        logging.info(f"Next END ")
-        while not self._closed:
-            audio_event = await self._event_ch.get()  # Access the event channel from the superclass
-            try:
-                # Process the audio event
-                logging.info(f"Processing audio event: {audio_event}")
-                # Add custom processing logic here
-            finally:
-                self._event_ch.task_done()
+        async def recv_task():
+            audio_bstream = utils.audio.AudioByteStream(
+                sample_rate=self.opts.sample_rate,
+                num_channels=1,
+            )
+
+            while True:
+                msg = await ws.receive()
+                if msg.type in (
+                    aiohttp.WSMsgType.CLOSED,
+                    aiohttp.WSMsgType.CLOSE,
+                    aiohttp.WSMsgType.CLOSING,
+                ):
+                    raise Exception("Cartesia connection closed unexpectedly")
+
+                if msg.type != aiohttp.WSMsgType.TEXT:
+                    logger.warning("unexpected Cartesia message type %s", msg.type)
+                    continue
+
+                data = json.loads(msg.data)
+                segment_id = data.get("context_id")
+                if data.get("data"):
+                    b64data = base64.b64decode(data["data"])
+                    for frame in audio_bstream.write(b64data):
+                        modified_frame = self.modify_audio_frame(frame)
+                        self._event_ch.send_nowait(
+                            tts.SynthesizedAudio(
+                                request_id=request_id,
+                                segment_id=segment_id,
+                                frame=modified_frame,
+                            )
+                        )
+                elif data.get("done"):
+                    for frame in audio_bstream.flush():
+                        modified_frame = self.modify_audio_frame(frame)
+                        self._event_ch.send_nowait(
+                            tts.SynthesizedAudio(
+                                request_id=request_id,
+                                segment_id=segment_id,
+                                frame=modified_frame,
+                            )
+                        )
+
+                    if segment_id == request_id:
+                        await ws.close()
+                        break
+                else:
+                    logger.error("unexpected Cartesia message %s", data)
+
+        # Call the original _run_ws method
+        await super()._run_ws(ws)
 
     def modify_audio_frame(self, frame: bytes) -> bytes:
-        """Modify the audio frame."""
-        self._check_not_closed()
+        # Apply your custom modifications to the audio frame here
         logging.info("Modifying audio frame")
         return frame  # Return the modified frame
-
-    def close(self):
-        """Close the stream and mark it as closed."""
-        self._closed = True
-        logging.info("CustomSynthesizeStream is now closed")
 
 
 class CustomTTS(CartesiaTTS):
@@ -111,14 +133,7 @@ class CustomTTS(CartesiaTTS):
 
     def stream(self) -> CustomSynthesizeStream:
         logging.info("CustomTTS stream called")
-
-        
-        stream = CustomSynthesizeStream(self._opts, self._ensure_session())
-        logging.info("CustomTTS stream called")
-        #stream.start_processing()
-        #stream.close()
-
-        return stream
+        return CustomSynthesizeStream(self._opts, self._ensure_session())
 
 
             # Send the audio data in chunks
@@ -277,6 +292,7 @@ async def entrypoint(ctx: JobContext):
             speaker_name = participant.name
             speaker_identity = participant.identity
             logging.info(f"Audio track from participant: {speaker_name} ({speaker_identity})")
+            
             
             # Process the audio stream
             process_audio_stream(audio_stream, speaker_name)
