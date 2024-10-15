@@ -164,9 +164,9 @@ export default function Page() {
     <>
       <main className={styles.main} data-lk-theme="default">
         <div className="header">
-          Meet
+          Artificial Intelligence
           <h2>
-            Multi Agent AI Avatar Meeting
+            Multi Agent Meeting
           </h2>
         </div>
         <Suspense fallback="Loading">
