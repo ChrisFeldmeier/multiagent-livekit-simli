@@ -4,14 +4,19 @@ import logging
 import aiohttp
 import numpy as np
 import time
+import base64
+import json
 import struct
 import ctypes
 import wave
+import livekit
 from livekit.agents import JobContext, WorkerOptions, cli, JobProcess
 from livekit.agents.llm import ChatContext, ChatMessage
 from livekit.agents.voice_assistant import VoiceAssistant
 from livekit.plugins import deepgram, silero, cartesia, openai
 from livekit import rtc
+#from utils import audio, shortuuid
+from livekit.agents import tokenize, tts, utils
 from aiortc import (
     RTCPeerConnection,
     RTCSessionDescription,
@@ -22,9 +27,14 @@ from aiortc import (
 from av import VideoFrame, AudioFrame
 from aiortc.contrib.media import MediaRelay
 from aiortc import MediaStreamTrack
-from aiortc.mediastreams import AudioStreamTrack
+from aiortc.mediastreams import AudioStreamTrack, VideoStreamTrack
 from dotenv import load_dotenv
 import cv2
+from scipy.signal import resample
+import asyncio
+from typing import AsyncIterable, AsyncGenerator
+from livekit.plugins.cartesia import TTS as CartesiaTTS  # Ensure this import is correct
+import uuid
 
 load_dotenv()
 
@@ -36,6 +46,88 @@ dc = None
 
 def prewarm(proc: JobProcess):
     proc.userdata["vad"] = silero.VAD.load()
+
+
+class CustomSynthesizeStream(tts.SynthesizeStream):
+    def __init__(self, opts, session):
+        super().__init__()  # Ensure proper initialization
+        self.opts = opts
+        self.session = session
+        self._closed = False  # Track the closed state
+
+    def _check_not_closed(self):
+        """Check if the stream is closed and raise an error if it is."""
+        if self._closed:
+            raise RuntimeError(f"{self.__class__.__module__}.{self.__class__.__name__} is closed")
+
+    async def _main_task(self):
+        """Implement the main task logic here."""
+        self._check_not_closed()
+        logging.info("Running _main_task in CustomSynthesizeStream")
+        await self.start_processing()
+
+    async def start_processing(self):
+        """Start processing audio frames from the event channel."""
+        self._check_not_closed()
+        logging.info("Starting audio frame processing")
+        consumer_task = asyncio.create_task(self._consume_event_ch())
+        await consumer_task
+
+    async def _consume_event_ch(self):
+        """Consume and process audio frames from the event channel."""
+        logging.info(f"Next Start Processing audio")
+        audio_event = await self._event_ch.get()
+        logging.info(f"Next END ")
+        while not self._closed:
+            audio_event = await self._event_ch.get()  # Access the event channel from the superclass
+            try:
+                # Process the audio event
+                logging.info(f"Processing audio event: {audio_event}")
+                # Add custom processing logic here
+            finally:
+                self._event_ch.task_done()
+
+    def modify_audio_frame(self, frame: bytes) -> bytes:
+        """Modify the audio frame."""
+        self._check_not_closed()
+        logging.info("Modifying audio frame")
+        return frame  # Return the modified frame
+
+    def close(self):
+        """Close the stream and mark it as closed."""
+        self._closed = True
+        logging.info("CustomSynthesizeStream is now closed")
+
+
+class CustomTTS(CartesiaTTS):
+    def __init__(self, *args, **kwargs):
+        # Call the parent class constructor to ensure all attributes are initialized
+        super().__init__(*args, **kwargs)
+        self.dc = None
+
+    def set_data_channel(self, dc):
+        """Set the data channel for sending audio frames."""
+        self.dc = dc
+        logging.info("Data channel set")
+
+    def stream(self) -> CustomSynthesizeStream:
+        logging.info("CustomTTS stream called")
+
+        
+        stream = CustomSynthesizeStream(self._opts, self._ensure_session())
+        logging.info("CustomTTS stream called")
+        #stream.start_processing()
+        #stream.close()
+
+        return stream
+
+
+            # Send the audio data in chunks
+            #for i in range(0, len(original_stream), 6000):
+            #    dc.send(original_stream[i: i + 6000]) # send audio stream to simli
+            #    logging.info(f"Sent audio chunk {i // 6000 + 1}")
+            #return original_stream
+
 
 class CustomAudioStreamTrack(MediaStreamTrack):
                 kind = "audio"
@@ -131,12 +223,40 @@ async def entrypoint(ctx: JobContext):
                 content=(
                     "You are a voice assistant. Pretend we're having a human conversation, "
                     "no special formatting or headings, just natural speech. "
-                    "Only say something if I call you with your name John. If not please don't say anything."
+                    "Only say something if I call you with your name Emma. If not please don't say absolutely anything. Keep the response then empty."
                 ),
             )
         ]
     )
 
+    # TTS String
+    def _before_tts_cb(assistant, text):
+        if isinstance(text, str):
+            return str.replace("livekit", "LiveKit")
+        else:
+            async def _iterate_str():
+                async for chunk in text:
+                    yield "" #chunk.replace("word_may_be_partial_here", "")  #need this to accpet TTS
+            return _iterate_str()
+   
+        # return tokenize.utils.replace_words(
+        #     text=plain_text, replacements={"{": "", "}": ""}
+        # )
+
+    #def _before_tts(agent: VoiceAssistant, text: str | AsyncIterable[str]):
+    #    if isinstance(text, str):
+    #        print("SPEAKING TEXT:")
+    #        print(str)
+    #        return str.replace("livekit", "LiveKit")
+    #    else:
+    #        async def _iterate_str():
+    #            async for chunk in text:
+    #                yield chunk.replace("word_may_be_partial_here", "")
+    #        
+    #        return _iterate_str()
+
+    custom_tts = cartesia.TTS(voice="248be419-c632-4f23-adf1-5324ed7dbf1d", sample_rate=16000)
+    #custom_tts._ensure_session
     assistant = VoiceAssistant(
         vad=ctx.proc.userdata["vad"],
         stt=deepgram.STT(),
@@ -145,53 +265,48 @@ async def entrypoint(ctx: JobContext):
             api_key=os.environ.get("CEREBRAS_API_KEY"),
             model="llama3.1-8b",
         ),
-        tts=cartesia.TTS(voice="248be419-c632-4f23-adf1-5324ed7dbf1d"),
+        tts=custom_tts,
         chat_ctx=initial_ctx,
+        before_tts_cb=_before_tts_cb
     )
 
-    await ctx.connect()
-    assistant.start(ctx.room)
-    room = ctx.room
 
-    # if a speaker is changing
-    @room.on("active_speakers_changed")
-    def on_active_speakers_changed(speakers: list[rtc.Participant]):
-        logging.info("active speakers changed: %s", speakers)
 
-    # what happens in the room
-    @room.on("track_subscribed")
-    def on_track_subscribed(
-        track: rtc.Track,
-        publication: rtc.RemoteTrackPublication,
-        participant: rtc.RemoteParticipant,
-    ):
-        global dc
-        logging.info("track subscribed: %s", publication.sid)
-        if track.kind == rtc.TrackKind.KIND_VIDEO:
-            _video_stream = rtc.VideoStream(track)
-            logging.info("track video subscribed!")
-            logging.info("participant name "+participant.name)
-            logging.info("participant name "+participant.identity)
-            
-            # video_stream is an async iterator that yields VideoFrame
-        elif track.kind == rtc.TrackKind.KIND_AUDIO:
-            print("Subscribed to an Audio Track")
-            _audio_stream = rtc.AudioStream(track)
-            
-            logging.info("track audio subscribed!")
-            
-            audio_track = CustomAudioStreamTrack(_audio_stream)
-            logging.info("CustomAudioStreamTrack created for audio stream.")
+    async def get_audio_frames(tts: cartesia.TTS) -> AsyncGenerator[AudioFrame, None]:
+        async for chunk in tts.stream():
+            # Convert chunk to AudioFrame
+            logging.info("receive cartesia audio stream chunk")
+            audio_frame = AudioFrame(
+                data=chunk,
+                sample_rate=tts.sample_rate,
+                num_channels=1,  # Assuming mono
+                samples_per_channel=len(chunk) // 2  # Assuming 16-bit audio
+            )
+            yield audio_frame
+    #asyncio.create_task(get_audio_frames(custom_tts))
 
-            #pc.addTransceiver(audio_track, direction="sendonly") #pc hier ist nicht erreichbar
-            logging.info("Audio track added to RTCPeerConnection with direction 'sendonly'.")
-            # audio_stream is an async iterator that yields AudioFrame
-            # here you should send the audio stream to simli 
 
-    logging.info("connected to room %s", room.name)
-    logging.info("participants: %s", room.remote_participants)
+    def process_audio_stream(audio_stream, speaker_name):
+        async def audio_processing_task():
+            async for frame_event in audio_stream:
+                try:
+                    # Access the audio frame from the event
+                    frame = frame_event.frame
+                    # Process the audio frame
 
-    await asyncio.sleep(2)
+                    ### kann wsl. später entfernt werden, weil nicht genutzt
+                    
+                    print(f"New Audio frame received from {speaker_name}")
+                    # Add your audio processing logic here
+                except Exception as e:
+                    logging.error(f"Error processing audio frame: {e}")
+                    break
+        # Start the audio processing task
+        asyncio.create_task(audio_processing_task())
+                # audio_stream is an async iterator that yields AudioFrame
+                # here you should send the audio stream to simli 
+
+
     #await room.local_participant.publish_data("hello world")
 
     # Simli API key and Face ID from environment variables
@@ -236,15 +351,207 @@ async def entrypoint(ctx: JobContext):
         # Important: Send something to Simli to receive audio & video data
         dc.send((0).to_bytes(1, "little") * 6000)
 
+        # Just a Test here sending a local WAV file to the avatar -> choose the file format
+        # file_path = "input-audio-longer.wav" 
+        # # Ensure the file exists
+        # if not os.path.exists(file_path):
+        #     logging.error(f"File {file_path} does not exist.")
+        # else:
+        #     # Test Speaking
+        #     # Open the WAV file
+        #     with wave.open(file_path, 'rb') as wav_file:
+        #         # Check if the file is in PCM Int16 format
+        #         if wav_file.getsampwidth() != 2 or wav_file.getcomptype() != 'NONE':
+        #             logging.error("The WAV file is not in PCM Int16 format.")
+        #         elif wav_file.getnchannels() != 1:
+        #             logging.error("The WAV file is not mono.")
+        #         else:
+        #             # Read the frames from the WAV file
+        #             audio_data = wav_file.readframes(wav_file.getnframes())
+
+        #             # Since the file is already mono, directly convert to bytes
+        #             mono_audio_data = audio_data
+
+        #             # Send the audio data in chunks
+        #             for i in range(0, len(mono_audio_data), 6000):
+        #                 dc.send(mono_audio_data[i: i + 6000]) # send audio stream to simli
+        #                 logging.info(f"Sent audio chunk {i // 6000 + 1}")
+
+        # logger.info("Now receiving audio & video")
 
     @dc.on("message")
     def on_message(message):
         logger.info(f"Message received on DataChannel: {message}")
 
+    await ctx.connect()
+    assistant.start(ctx.room)
+    chat = rtc.ChatManager(ctx.room)
+    room = ctx.room
+
+    logging.info("connected to room %s", room.name)
+    logging.info("participants: %s", room.remote_participants)
+
+    #participant = room.remote_participants.get("Chris")
+    
+    #audio_stream = rtc.AudioStream.from_participant(
+    #                participant=participant,
+    #                track_source=rtc.TrackSource.MICROPHONE,
+    #                sample_rate=18000,
+    #                num_channels=1,
+    #            )
+
+    # if a speaker is changing
+    @room.on("active_speakers_changed")
+    def on_active_speakers_changed(speakers: list[rtc.Participant]):
+        logging.info("active speakers changed: %s", speakers)
+
+    # what happens in the room
+    @room.on("track_subscribed")
+    def on_track_subscribed(
+        track: rtc.Track,
+        publication: rtc.RemoteTrackPublication,
+        participant: rtc.RemoteParticipant,
+    ):
+        logging.info("Track subscribed: %s", publication.sid)
+        if track.kind == rtc.TrackKind.KIND_VIDEO:
+            _video_stream = rtc.VideoStream(track)
+            logging.info("track video subscribed!")
+            logging.info("participant name "+participant.name)
+            logging.info("participant name "+participant.identity)
+            
+            # video_stream is an async iterator that yields VideoFrame
+        elif track.kind == rtc.TrackKind.KIND_AUDIO:
+            print("Subscribed to an Audio Track")
+            
+            # Access the audio stream
+            audio_stream = rtc.AudioStream(track)
+            logging.info("Audio stream accessed!")
+            
+            # Identify the speaker
+            speaker_name = participant.name
+            speaker_identity = participant.identity
+            logging.info(f"Audio track from participant: {speaker_name} ({speaker_identity})")
+
+            # if speaker_name == "Chris":
+            #     async def process_audio_stream():
+            #         async for frame_event in audio_stream:
+            #             try:
+            #                 # Access the audio frame from the event
+            #                 frame = frame_event.frame
+            #                 logging.info(f"New Audio track frame received from {speaker_name}")
+
+            #                 # Convert the audio frame to bytes (Assuming it's in PCM 16-bit format)
+            #                 audio_data = frame.to_bytes()
+
+            #                 # Send the audio frame data to Simli using the DataChannel
+            #                 for i in range(0, len(audio_data), 6000):
+            #                     if dc and dc.readyState == "open":
+            #                         dc.send(audio_data[i: i + 6000])
+            #                         logging.info(f"Sent audio chunk {i // 6000 + 1} to Simli")
+            #                     else:
+            #                         logging.warning("DataChannel is not open")
+            #             except Exception as e:
+            #                 logging.error(f"Error processing audio frame: {e}")
+            #                 break
+
+            #     # Start the async task
+            #     asyncio.create_task(process_audio_stream())
+
+            return audio_stream
+            
+            # Process the audio stream
+            #process_audio_stream(audio_stream, speaker_name)
 
     # Initialize the MediaRelay before use
     relay = MediaRelay()
 
+
+    async def get_audio_frames(text: str, tts: cartesia.TTS) -> AsyncGenerator[AudioFrame, None]:
+        async for chunk in tts.synthesize(text):
+            # Convert chunk to AudioFrame
+            logging.info("FRAME: Cartesia")
+            audio_frame = AudioFrame(
+                data=chunk,
+                sample_rate=tts.sample_rate,
+                num_channels=1,  # Assuming mono
+                samples_per_channel=len(chunk) // 2  # Assuming 16-bit audio
+            )
+            yield audio_frame
+
+    async def answer_from_text(txt: str):
+        logging.info(txt)
+        audio_data = None
+        
+        # Synthesize the text
+        tts_synth = custom_tts.synthesize(txt)
+        all_frames = []
+        async for audio_frame in tts_synth:
+            # If audio_data is not directly bytes, convert it
+            audio_data = audio_frame.frame.data
+            all_frames.append(audio_data)
+        
+        all_audio_data = b''.join(all_frames)
+        # Send the audio data in chunks over the data channel
+        for i in range(0, len(all_audio_data), 6000):
+            chunk = all_audio_data[i: i + 6000]
+            if dc and dc.readyState == "open":
+                dc.send(chunk)
+                logging.info(f"Sent audio chunk {i // 6000 + 1} to data channel")
+            else:
+                logging.warning("DataChannel is not open")
+
+        chat_ctx = assistant.chat_ctx.copy()
+        chat_ctx.append(role="user", text=txt)
+        #stream = assistant.llm.chat(chat_ctx=chat_ctx)
+        #await assistant.say(stream)
+
+    @chat.on("message_received")
+    def on_chat_received(msg: rtc.ChatMessage):
+        if msg.message:
+            asyncio.create_task(answer_from_text(msg.message))
+
+    async def broadcast_event(local_participant, event_name, msg: ChatMessage):
+        # Encode the event data into a format suitable for transmission
+    
+        logging.info("MY MESSAGE COTNENT:")
+        logging.info(msg.content)
+        
+        tts_synth = custom_tts.synthesize(msg.content)
+        all_frames = []
+        async for audio_frame in tts_synth:
+            # If audio_data is not directly bytes, convert it
+            audio_data = audio_frame.frame.data
+            all_frames.append(audio_data)
+        
+        all_audio_data = b''.join(all_frames)
+        # Send the audio data in chunks over the data channel
+        for i in range(0, len(all_audio_data), 6000):
+            chunk = all_audio_data[i: i + 6000]
+            if dc and dc.readyState == "open":
+                dc.send(chunk)
+                logging.info(f"MESSAGE Sent audio chunk {i // 6000 + 1} to data channel")
+            else:
+                logging.warning("MESSAGE DataChannel is not open")
+
+            #await local_participant.publish_data(
+            #    payload=payload,
+            #    reliable=True,  # Reliable transmission
+            #    destination_identities=[],  # Broadcast to all participants
+            ##    topic="speaking_state"
+            #)
+            logging.info(f"MESSAGE Broadcasted event '{event_name}' with data: {msg}")
+  
+
+    def user_speech_committed(assistant, local_participant, user_msg: ChatMessage):
+        asyncio.create_task(broadcast_event(local_participant, "user_speech_committed", user_msg))
+        logging.info(f"Event data: user_speech_committed")
+
+    def agent_speech_committed(assistant, local_participant, msg: ChatMessage):
+        asyncio.create_task(broadcast_event(local_participant, "agent_speech_committed", msg))
+        logging.info(f"Event data: agent_speech_committed")
+
+    #assistant.on('user_speech_committed', lambda user_msg: user_speech_committed(assistant, ctx.room.local_participant, user_msg))
+    assistant.on('agent_speech_committed', lambda msg: agent_speech_committed(assistant, ctx.room.local_participant, msg))
     
     # Function to send TTS audio to Simli
     async def send_tts_audio_to_simli(tts_text):
@@ -256,7 +563,8 @@ async def entrypoint(ctx: JobContext):
         tts_audio_track = TTSAudioTrack(tts_audio_data, sample_rate=SAMPLE_RATE, channels=NUM_CHANNELS)
 
         # Add transceiver and send audio
-        tts_audio_transceiver = pc.addTransceiver(tts_audio_track, direction="sendonly")
+        #tts_audio_transceiver = pc.addTransceiver(tts_audio_track, direction="sendonly")
+        #### no dc.send is the correct one
 
         # Publish the audio track to the LiveKit room
         try:
@@ -267,11 +575,11 @@ async def entrypoint(ctx: JobContext):
             logger.error(f"Error publishing TTS audio track: {e}")
 
     # Register event handler before setting the remote description
+
     @pc.on("track")
     def on_track(track):
         logger.info(f"Track {track.kind} received")
         logger.debug(f"Track Details: {track}")
-
         if track.kind == "video":
             try:
                 # Subscribe to the incoming video track
@@ -290,27 +598,26 @@ async def entrypoint(ctx: JobContext):
             source = rtc.VideoSource(WIDTH, HEIGHT)
             logger.debug("VideoSource for LiveKit created")
 
+        
+
             async def forward_frames():
                         logger.info("Starting forward_frames loop")
                         while True:
                             try:
                                 # Receiving the frame from Simli
                                 frame = await relayed_video.recv()
+                                frame = frame.to_rgb() #get direct the stream from frame
 
                                 if frame:
                                     logger.info(f"Video frame received from Simli: {frame.width}x{frame.height}")
 
-                                    # Convert the frame to an ndarray (YUV format)
-                                    ndarray_yuv = frame.to_ndarray(format="yuv420p")
+                                    # Assuming the frame is already in RGB format
+                                    ndarray_rgb = frame.to_ndarray(format="rgb24")
 
-                                    if ndarray_yuv is not None:
-                                        logger.debug(f"Frame-NDArray Shape (YUV): {ndarray_yuv.shape}")
-
-                                        # Convert YUV to RGB using OpenCV
-                                        ndarray_rgb = cv2.cvtColor(ndarray_yuv, cv2.COLOR_YUV2RGB_I420)
+                                    if ndarray_rgb is not None:
                                         logger.debug(f"Frame-NDArray Shape (RGB): {ndarray_rgb.shape}")
 
-                                        # Initialize the LiveKit VideoFrame (without 'buffer_type')
+                                        # Initialize the LiveKit VideoFrame with the RGB data
                                         livekit_frame = rtc.VideoFrame(
                                             width=frame.width,
                                             height=frame.height,
@@ -373,12 +680,14 @@ async def entrypoint(ctx: JobContext):
                 return
 
 
+            SAMPLE_RATE = 48000
+            NUM_CHANNELS = 1
+
             # Create an AudioSource for LiveKit
-            SAMPLE_RATE = 48000  # Adjust as needed
-            NUM_CHANNELS = 2
             audio_source = rtc.AudioSource(SAMPLE_RATE, NUM_CHANNELS)
             print("AudioSource for LiveKit created")
 
+        
             async def forward_audio(relayed_audio, audio_source):
                 while True:
                     try:
@@ -403,19 +712,19 @@ async def entrypoint(ctx: JobContext):
 
                                 # Read the raw audio data from the buffer as bytearray
                                 audio_data_ptr = ctypes.cast(audio_plane.buffer_ptr, ctypes.POINTER(ctypes.c_int16))
-                                audio_data = bytearray(ctypes.string_at(audio_data_ptr, audio_plane.buffer_size))
+                                audio_data = np.frombuffer(ctypes.string_at(audio_data_ptr, audio_plane.buffer_size), dtype=np.int16)
 
-                                # Ensure the audio data length matches the buffer size
-                                if len(audio_data) != audio_plane.buffer_size:
-                                    print("Warning: Audio data length does not match buffer size")
+                                # Convert stereo to mono by averaging the two channels
+                                if len(frame.layout.channels) == 2:
+                                    audio_data = audio_data.reshape(-1, 2)
+                                    mono_audio_data = audio_data.mean(axis=1).astype(np.int16)
+                                else:
+                                    mono_audio_data = audio_data
 
-                                # Create the LiveKit AudioFrame with the verified PCM data
-                                livekit_frame = rtc.AudioFrame(
-                                    data=audio_data,
-                                    sample_rate=frame.sample_rate,
-                                    num_channels=len(frame.layout.channels),
-                                    samples_per_channel=len(audio_data) // (2 * len(frame.layout.channels))
-                                )
+                                # Create the LiveKit AudioFrame with the PCM data
+                                samples_per_channel = len(mono_audio_data)
+                                livekit_frame = rtc.AudioFrame.create(SAMPLE_RATE, NUM_CHANNELS, samples_per_channel)
+                                np.copyto(np.frombuffer(livekit_frame.data, dtype=np.int16), mono_audio_data)
 
                                 # Send the frame to the LiveKit audio source    
                                 await audio_source.capture_frame(livekit_frame)
@@ -430,9 +739,6 @@ async def entrypoint(ctx: JobContext):
                         print(f"Error processing audio frame: {e}")
 
                     await asyncio.sleep(0)  # Yield control to the event loop
-
-
-
 
             task_forward_audio = asyncio.create_task(forward_audio(relayed_audio, audio_source))
 
@@ -449,7 +755,9 @@ async def entrypoint(ctx: JobContext):
             # Publish the audio track in the LiveKit room
             async def publish_audio_track():
                 try:
-                    publication = await room.local_participant.publish_track(livekit_audio_track)
+                    #options = rtc.TrackPublishOptions()
+                    #options.source = rtc.TrackSource.SOURCE_MICROPHONE
+                    publication = await room.local_participant.publish_track(livekit_audio_track) #,options
                     logger.info(
                         "Simli audio track published",
                         extra={"track_sid": publication.sid},
@@ -527,6 +835,7 @@ async def entrypoint(ctx: JobContext):
         elif pc.iceConnectionState == "disconnected":
             logger.warning("ICE connection disconnected")
 
+    #await asyncio.sleep(2)
     # Keep the application running
     await asyncio.Event().wait()
 
@@ -576,6 +885,6 @@ async def start_webrtc_session(offer_sdp, offer_type, api_key, session_token):
 if __name__ == "__main__":
     cli.run_app(
         WorkerOptions(
-            agent_name="john", entrypoint_fnc=entrypoint, prewarm_fnc=prewarm, port=8083
+            agent_name="Emma", entrypoint_fnc=entrypoint, prewarm_fnc=prewarm, port=8083
         )
     )

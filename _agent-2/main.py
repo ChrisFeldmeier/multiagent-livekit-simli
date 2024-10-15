@@ -223,7 +223,7 @@ async def entrypoint(ctx: JobContext):
                 content=(
                     "You are a voice assistant. Pretend we're having a human conversation, "
                     "no special formatting or headings, just natural speech. "
-                    "Only say something if I call you with your name John. If not please don't say absolutely anything. Keep the response then empty."
+                    "Only say something if I call you with your name John. If not please don't say anything."
                 ),
             )
         ]
@@ -255,8 +255,8 @@ async def entrypoint(ctx: JobContext):
     #        
     #        return _iterate_str()
 
-    custom_tts = cartesia.TTS(voice="95856005-0332-41b0-935f-352e296aa0df", sample_rate=16000)
-    #custom_tts._ensure_session
+    custom_tts = cartesia.TTS(voice="248be419-c632-4f23-adf1-5324ed7dbf1d", sample_rate=16000)
+    custom_tts._ensure_session
     assistant = VoiceAssistant(
         vad=ctx.proc.userdata["vad"],
         stt=deepgram.STT(),
@@ -885,6 +885,6 @@ async def start_webrtc_session(offer_sdp, offer_type, api_key, session_token):
 if __name__ == "__main__":
     cli.run_app(
         WorkerOptions(
-            agent_name="John", entrypoint_fnc=entrypoint, prewarm_fnc=prewarm, port=8082
+            agent_name="catherine", entrypoint_fnc=entrypoint, prewarm_fnc=prewarm, port=8083
         )
     )
