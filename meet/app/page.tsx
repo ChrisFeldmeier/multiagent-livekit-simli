@@ -105,7 +105,7 @@ function CustomConnectionTab(props: { label: string }) {
   return (
     <form className={styles.tabContent} onSubmit={onSubmit}>
       <p style={{ marginTop: 0 }}>
-        Connect LiveKit Meet with a custom server using LiveKit Cloud or LiveKit Server.
+        Connect.
       </p>
       <input
         id="serverUrl"

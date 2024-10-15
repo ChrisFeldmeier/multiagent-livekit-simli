@@ -885,6 +885,6 @@ async def start_webrtc_session(offer_sdp, offer_type, api_key, session_token):
 if __name__ == "__main__":
     cli.run_app(
         WorkerOptions(
-            agent_name="John", entrypoint_fnc=entrypoint, prewarm_fnc=prewarm, port=8082
+            agent_name="John", entrypoint_fnc=entrypoint, prewarm_fnc=prewarm, port=8081
         )
     )
