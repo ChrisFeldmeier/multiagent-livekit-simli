@@ -39,7 +39,7 @@ import uuid
 load_dotenv()
 
 # Set global logging level to DEBUG for more comprehensive logs
-logging.basicConfig(level=logging.ERROR)
+logging.basicConfig(level=logging.NOTSET)
 logger = logging.getLogger(__name__)  # Create a logger for this module
 
 dc = None
@@ -63,26 +63,27 @@ class CustomSynthesizeStream(tts.SynthesizeStream):
     async def _main_task(self):
         """Implement the main task logic here."""
         self._check_not_closed()
-        logging.info("Running _main_task in CustomSynthesizeStream")
+        #logging.info("Running _main_task in CustomSynthesizeStream")
         await self.start_processing()
 
     async def start_processing(self):
         """Start processing audio frames from the event channel."""
         self._check_not_closed()
-        logging.info("Starting audio frame processing")
+        #logging.info("Starting audio frame processing")
         consumer_task = asyncio.create_task(self._consume_event_ch())
         await consumer_task
 
     async def _consume_event_ch(self):
         """Consume and process audio frames from the event channel."""
-        logging.info(f"Next Start Processing audio")
+        #logging.info(f"Next Start Processing audio")
         audio_event = await self._event_ch.get()
-        logging.info(f"Next END ")
+        #logging.info(f"Next END ")
         while not self._closed:
             audio_event = await self._event_ch.get()  # Access the event channel from the superclass
             try:
                 # Process the audio event
-                logging.info(f"Processing audio event: {audio_event}")
+                #logging.info(f"Processing audio event: {audio_event}")
+                continue
                 # Add custom processing logic here
             finally:
                 self._event_ch.task_done()
@@ -90,13 +91,13 @@ class CustomSynthesizeStream(tts.SynthesizeStream):
     def modify_audio_frame(self, frame: bytes) -> bytes:
         """Modify the audio frame."""
         self._check_not_closed()
-        logging.info("Modifying audio frame")
+        #logging.info("Modifying audio frame")
         return frame  # Return the modified frame
 
     def close(self):
         """Close the stream and mark it as closed."""
         self._closed = True
-        logging.info("CustomSynthesizeStream is now closed")
+        #logging.info("CustomSynthesizeStream is now closed")
 
 
 class CustomTTS(CartesiaTTS):
@@ -108,14 +109,14 @@ class CustomTTS(CartesiaTTS):
     def set_data_channel(self, dc):
         """Set the data channel for sending audio frames."""
         self.dc = dc
-        logging.info("Data channel set")
+        #logging.info("Data channel set")
 
     def stream(self) -> CustomSynthesizeStream:
-        logging.info("CustomTTS stream called")
+        #logging.info("CustomTTS stream called")
 
         
         stream = CustomSynthesizeStream(self._opts, self._ensure_session())
-        logging.info("CustomTTS stream called")
+        #logging.info("CustomTTS stream called")
         #stream.start_processing()
         #stream.close()
 
@@ -125,7 +126,7 @@ class CustomTTS(CartesiaTTS):
             # Send the audio data in chunks
             #for i in range(0, len(original_stream), 6000):
             #    dc.send(original_stream[i: i + 6000]) # send audio stream to simli
-            #    logging.info(f"Sent audio chunk {i // 6000 + 1}")
+            #    #logging.info(f"Sent audio chunk {i // 6000 + 1}")
             #return original_stream
 
 
@@ -275,7 +276,7 @@ async def entrypoint(ctx: JobContext):
     async def get_audio_frames(tts: cartesia.TTS) -> AsyncGenerator[AudioFrame, None]:
         async for chunk in tts.stream():
             # Convert chunk to AudioFrame
-            logging.info("receive cartesia audio stream chunk")
+            #logging.info("receive cartesia audio stream chunk")
             audio_frame = AudioFrame(
                 data=chunk,
                 sample_rate=tts.sample_rate,
@@ -375,7 +376,7 @@ async def entrypoint(ctx: JobContext):
         #             # Send the audio data in chunks
         #             for i in range(0, len(mono_audio_data), 6000):
         #                 dc.send(mono_audio_data[i: i + 6000]) # send audio stream to simli
-        #                 logging.info(f"Sent audio chunk {i // 6000 + 1}")
+        #                 #logging.info(f"Sent audio chunk {i // 6000 + 1}")
 
         # logger.info("Now receiving audio & video")
 
@@ -388,8 +389,8 @@ async def entrypoint(ctx: JobContext):
     chat = rtc.ChatManager(ctx.room)
     room = ctx.room
 
-    logging.info("connected to room %s", room.name)
-    logging.info("participants: %s", room.remote_participants)
+    #logging.info("connected to room %s", room.name)
+    #logging.info("participants: %s", room.remote_participants)
 
     #participant = room.remote_participants.get("Chris")
     
@@ -403,7 +404,7 @@ async def entrypoint(ctx: JobContext):
     # if a speaker is changing
     @room.on("active_speakers_changed")
     def on_active_speakers_changed(speakers: list[rtc.Participant]):
-        logging.info("active speakers changed: %s", speakers)
+        #logging.info("active speakers changed: %s", speakers)
 
     # what happens in the room
     @room.on("track_subscribed")
@@ -412,12 +413,12 @@ async def entrypoint(ctx: JobContext):
         publication: rtc.RemoteTrackPublication,
         participant: rtc.RemoteParticipant,
     ):
-        logging.info("Track subscribed: %s", publication.sid)
+        #logging.info("Track subscribed: %s", publication.sid)
         if track.kind == rtc.TrackKind.KIND_VIDEO:
             _video_stream = rtc.VideoStream(track)
-            logging.info("track video subscribed!")
-            logging.info("participant name "+participant.name)
-            logging.info("participant name "+participant.identity)
+            #logging.info("track video subscribed!")
+            #logging.info("participant name "+participant.name)
+            #logging.info("participant name "+participant.identity)
             
             # video_stream is an async iterator that yields VideoFrame
         elif track.kind == rtc.TrackKind.KIND_AUDIO:
@@ -425,12 +426,12 @@ async def entrypoint(ctx: JobContext):
             
             # Access the audio stream
             audio_stream = rtc.AudioStream(track)
-            logging.info("Audio stream accessed!")
+            #logging.info("Audio stream accessed!")
             
             # Identify the speaker
             speaker_name = participant.name
             speaker_identity = participant.identity
-            logging.info(f"Audio track from participant: {speaker_name} ({speaker_identity})")
+            #logging.info(f"Audio track from participant: {speaker_name} ({speaker_identity})")
 
             # if speaker_name == "Chris":
             #     async def process_audio_stream():
@@ -438,7 +439,7 @@ async def entrypoint(ctx: JobContext):
             #             try:
             #                 # Access the audio frame from the event
             #                 frame = frame_event.frame
-            #                 logging.info(f"New Audio track frame received from {speaker_name}")
+            #                 #logging.info(f"New Audio track frame received from {speaker_name}")
 
             #                 # Convert the audio frame to bytes (Assuming it's in PCM 16-bit format)
             #                 audio_data = frame.to_bytes()
@@ -447,7 +448,7 @@ async def entrypoint(ctx: JobContext):
             #                 for i in range(0, len(audio_data), 6000):
             #                     if dc and dc.readyState == "open":
             #                         dc.send(audio_data[i: i + 6000])
-            #                         logging.info(f"Sent audio chunk {i // 6000 + 1} to Simli")
+            #                         #logging.info(f"Sent audio chunk {i // 6000 + 1} to Simli")
             #                     else:
             #                         logging.warning("DataChannel is not open")
             #             except Exception as e:
@@ -469,7 +470,7 @@ async def entrypoint(ctx: JobContext):
     async def get_audio_frames(text: str, tts: cartesia.TTS) -> AsyncGenerator[AudioFrame, None]:
         async for chunk in tts.synthesize(text):
             # Convert chunk to AudioFrame
-            logging.info("FRAME: Cartesia")
+            #logging.info("FRAME: Cartesia")
             audio_frame = AudioFrame(
                 data=chunk,
                 sample_rate=tts.sample_rate,
@@ -479,7 +480,7 @@ async def entrypoint(ctx: JobContext):
             yield audio_frame
 
     async def answer_from_text(txt: str):
-        logging.info(txt)
+        #logging.info(txt)
         audio_data = None
         
         # Synthesize the text
@@ -496,7 +497,7 @@ async def entrypoint(ctx: JobContext):
             chunk = all_audio_data[i: i + 6000]
             if dc and dc.readyState == "open":
                 dc.send(chunk)
-                logging.info(f"Sent audio chunk {i // 6000 + 1} to data channel")
+                #logging.info(f"Sent audio chunk {i // 6000 + 1} to data channel")
             else:
                 logging.warning("DataChannel is not open")
 
@@ -513,8 +514,8 @@ async def entrypoint(ctx: JobContext):
     async def broadcast_event(local_participant, event_name, msg: ChatMessage):
         # Encode the event data into a format suitable for transmission
     
-        logging.info("MY MESSAGE COTNENT:")
-        logging.info(msg.content)
+        #logging.info("MY MESSAGE COTNENT:")
+        #logging.info(msg.content)
         
         tts_synth = custom_tts.synthesize(msg.content)
         all_frames = []
@@ -529,7 +530,7 @@ async def entrypoint(ctx: JobContext):
             chunk = all_audio_data[i: i + 6000]
             if dc and dc.readyState == "open":
                 dc.send(chunk)
-                logging.info(f"MESSAGE Sent audio chunk {i // 6000 + 1} to data channel")
+                #logging.info(f"MESSAGE Sent audio chunk {i // 6000 + 1} to data channel")
             else:
                 logging.warning("MESSAGE DataChannel is not open")
 
@@ -539,16 +540,16 @@ async def entrypoint(ctx: JobContext):
             #    destination_identities=[],  # Broadcast to all participants
             ##    topic="speaking_state"
             #)
-            logging.info(f"MESSAGE Broadcasted event '{event_name}' with data: {msg}")
+            #logging.info(f"MESSAGE Broadcasted event '{event_name}' with data: {msg}")
   
 
     def user_speech_committed(assistant, local_participant, user_msg: ChatMessage):
         asyncio.create_task(broadcast_event(local_participant, "user_speech_committed", user_msg))
-        logging.info(f"Event data: user_speech_committed")
+        #logging.info(f"Event data: user_speech_committed")
 
     def agent_speech_committed(assistant, local_participant, msg: ChatMessage):
         asyncio.create_task(broadcast_event(local_participant, "agent_speech_committed", msg))
-        logging.info(f"Event data: agent_speech_committed")
+        #logging.info(f"Event data: agent_speech_committed")
 
     #assistant.on('user_speech_committed', lambda user_msg: user_speech_committed(assistant, ctx.room.local_participant, user_msg))
     assistant.on('agent_speech_committed', lambda msg: agent_speech_committed(assistant, ctx.room.local_participant, msg))
