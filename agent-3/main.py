@@ -345,9 +345,9 @@ async def entrypoint(ctx: JobContext):
     # Send the session_token over the DataChannel
     @dc.on("open")
     async def on_open():
-        logger.info("DataChannel is open")
+        #logger.info("DataChannel is open")
         dc.send(session_token)
-        logger.info(f"Session token sent: {session_token}")
+        #logger.info(f"Session token sent: {session_token}")
 
         # Important: Send something to Simli to receive audio & video data
         dc.send((0).to_bytes(1, "little") * 6000)
@@ -378,11 +378,11 @@ async def entrypoint(ctx: JobContext):
         #                 dc.send(mono_audio_data[i: i + 6000]) # send audio stream to simli
         #                 #logging.info(f"Sent audio chunk {i // 6000 + 1}")
 
-        # logger.info("Now receiving audio & video")
+        # #logger.info("Now receiving audio & video")
 
-    @dc.on("message")
-    def on_message(message):
-        logger.info(f"Message received on DataChannel: {message}")
+    #@dc.on("message")
+    #def on_message(message):
+        #logger.info(f"Message received on DataChannel: {message}")
 
     await ctx.connect()
     assistant.start(ctx.room)
@@ -402,9 +402,9 @@ async def entrypoint(ctx: JobContext):
     #            )
 
     # if a speaker is changing
-    @room.on("active_speakers_changed")
-    def on_active_speakers_changed(speakers: list[rtc.Participant]):
-        #logging.info("active speakers changed: %s", speakers)
+    #@room.on("active_speakers_changed")
+    #def on_active_speakers_changed(speakers: list[rtc.Participant]):
+    #    logging.info("active speakers changed: %s", speakers)
 
     # what happens in the room
     @room.on("track_subscribed")
@@ -571,7 +571,7 @@ async def entrypoint(ctx: JobContext):
         try:
             livekit_audio_track = rtc.LocalAudioTrack.create_audio_track("tts-audio", tts_audio_track)
             await room.local_participant.publish_track(livekit_audio_track)
-            logger.info("TTS audio track published")
+            #logger.info("TTS audio track published")
         except Exception as e:
             logger.error(f"Error publishing TTS audio track: {e}")
 
@@ -579,16 +579,16 @@ async def entrypoint(ctx: JobContext):
 
     @pc.on("track")
     def on_track(track):
-        logger.info(f"Track {track.kind} received")
-        logger.debug(f"Track Details: {track}")
+        #logger.info(f"Track {track.kind} received")
+        #logger.debug(f"Track Details: {track}")
         if track.kind == "video":
             try:
                 # Subscribe to the incoming video track
                 relayed_video = relay.subscribe(track)
                 if relayed_video is None:
                     logger.error("relayed_video is None after subscription")
-                else:
-                    logger.debug("Successfully subscribed to video track")
+                #else:
+                    #logger.debug("Successfully subscribed to video track")
             except Exception as e:
                 logger.error(f"Error subscribing to video track: {e}")
                 return
@@ -597,11 +597,11 @@ async def entrypoint(ctx: JobContext):
             WIDTH = 512  # Adjust as needed
             HEIGHT = 512
             source = rtc.VideoSource(WIDTH, HEIGHT)
-            logger.debug("VideoSource for LiveKit created")
+            #logger.debug("VideoSource for LiveKit created")
         
 
             async def forward_frames():
-                        logger.info("Starting forward_frames loop")
+                        #logger.info("Starting forward_frames loop")
                         while True:
                             try:
                                 # Receiving the frame from Simli
@@ -609,13 +609,13 @@ async def entrypoint(ctx: JobContext):
                                 frame = frame.to_rgb() #get direct the stream from frame
 
                                 if frame:
-                                    logger.info(f"Video frame received from Simli: {frame.width}x{frame.height}")
+                                    #logger.info(f"Video frame received from Simli: {frame.width}x{frame.height}")
 
                                     # Assuming the frame is already in RGB format
                                     ndarray_rgb = frame.to_ndarray(format="rgb24")
 
                                     if ndarray_rgb is not None:
-                                        logger.debug(f"Frame-NDArray Shape (RGB): {ndarray_rgb.shape}")
+                                        #logger.debug(f"Frame-NDArray Shape (RGB): {ndarray_rgb.shape}")
 
                                         # Initialize the LiveKit VideoFrame with the RGB data
                                         livekit_frame = rtc.VideoFrame(
@@ -627,11 +627,11 @@ async def entrypoint(ctx: JobContext):
 
                                         # Send the frame directly to LiveKit
                                         source.capture_frame(livekit_frame)
-                                        logger.debug("VideoFrame successfully captured in VideoSource")
+                                        #logger.debug("VideoFrame successfully captured in VideoSource")
                                     else:
                                         logger.warning("Received frame NDArray is None")
-                                else:
-                                    logger.debug("No video frame received")
+                               # else:
+                                    #logger.debug("No video frame received")
 
                             except asyncio.CancelledError:
                                 logger.info("forward_frames task was cancelled")
@@ -642,12 +642,12 @@ async def entrypoint(ctx: JobContext):
                             await asyncio.sleep(0)  # Yield control
 
             task_forward_frames = asyncio.create_task(forward_frames())
-            logger.debug("forward_frames task started")
+            #logger.debug("forward_frames task started")
 
             # Create a LocalVideoTrack with the VideoSource
             try:
                 livekit_video_track = rtc.LocalVideoTrack.create_video_track("simli-video", source)
-                logger.debug("LocalVideoTrack successfully created")
+                #logger.debug("LocalVideoTrack successfully created")
             except Exception as e:
                 logger.error(f"Error creating LocalVideoTrack: {e}")
                 return
@@ -657,15 +657,12 @@ async def entrypoint(ctx: JobContext):
                 try:
                     options = rtc.TrackPublishOptions(source=rtc.TrackSource.SOURCE_CAMERA)
                     publication = await room.local_participant.publish_track(livekit_video_track, options)
-                    logger.info(
-                        "Simli video track published",
-                        extra={"track_sid": publication.sid},
-                    )
+                    
                 except Exception as e:
                     logger.error(f"Error publishing video track: {e}")
 
             task_publish_video = asyncio.create_task(publish_video_track())
-            logger.debug("publish_video_track task started")
+            #logger.debug("publish_video_track task started")
 
         elif track.kind == "audio":
             try:
@@ -673,8 +670,8 @@ async def entrypoint(ctx: JobContext):
                 relayed_audio = relay.subscribe(track)
                 if relayed_audio is None:
                     logger.error("relayed_audio is None after subscription")
-                else:
-                    logger.debug("Successfully subscribed to audio track")
+                #else:
+                    #logger.debug("Successfully subscribed to audio track")
             except Exception as e:
                 logger.error(f"Error subscribing to audio track: {e}")
                 return
@@ -742,12 +739,12 @@ async def entrypoint(ctx: JobContext):
 
             task_forward_audio = asyncio.create_task(forward_audio(relayed_audio, audio_source))
 
-            logger.debug("forward_audio task started")
+            #logger.debug("forward_audio task started")
 
             # Create a LocalAudioTrack with the AudioSource
             try:
                 livekit_audio_track = rtc.LocalAudioTrack.create_audio_track("simli-audio", audio_source)
-                logger.debug("LocalAudioTrack successfully created")
+                #logger.debug("LocalAudioTrack successfully created")
             except Exception as e:
                 logger.error(f"Error creating LocalAudioTrack: {e}")
                 return
@@ -758,29 +755,26 @@ async def entrypoint(ctx: JobContext):
                     #options = rtc.TrackPublishOptions()
                     #options.source = rtc.TrackSource.SOURCE_MICROPHONE
                     publication = await room.local_participant.publish_track(livekit_audio_track) #,options
-                    logger.info(
-                        "Simli audio track published",
-                        extra={"track_sid": publication.sid},
-                    )
+                   
                 except Exception as e:
                     logger.error(f"Error publishing audio track: {e}")
 
             task_publish_audio = asyncio.create_task(publish_audio_track())
-            logger.debug("publish_audio_track task started")
+            #logger.debug("publish_audio_track task started")
 
     # Use transceivers with sendrecv for audio and video
-    logger.debug("Creating transceivers with sendrecv directions")
+    #logger.debug("Creating transceivers with sendrecv directions")
 
     # Add transceivers with the corresponding tracks
     silent_audio = SilentAudioTrack()
     audio_transceiver = pc.addTransceiver(silent_audio, direction="sendrecv")
-    if audio_transceiver.sender:
-        logger.debug("Audio transceiver with SilentAudioTrack successfully added")
+    #if audio_transceiver.sender:
+        #logger.debug("Audio transceiver with SilentAudioTrack successfully added")
 
     black_video = BlackVideoTrack(width=512, height=512)
     video_transceiver = pc.addTransceiver(black_video, direction="sendrecv")
-    if video_transceiver.sender:
-        logger.debug("Video transceiver with BlackVideoTrack successfully added")
+    #if video_transceiver.sender:
+        #logger.debug("Video transceiver with BlackVideoTrack successfully added")
 
 # Send TTS audio to Simli after connection setup
     async def test_send_tts():
@@ -791,11 +785,11 @@ async def entrypoint(ctx: JobContext):
         try:
             offer = await pc.createOffer()
             await pc.setLocalDescription(offer)
-            logger.debug(f"Local SDP offer:\n{pc.localDescription.sdp}")
+            #logger.debug(f"Local SDP offer:\n{pc.localDescription.sdp}")
             # Wait until ICE gathering is complete
             while pc.iceGatheringState != 'complete':
                 await asyncio.sleep(0.1)
-            logger.info("ICE gathering complete")
+            #logger.info("ICE gathering complete")
         except Exception as e:
             logger.error(f"Error during ICE gathering: {e}")
 
@@ -803,7 +797,7 @@ async def entrypoint(ctx: JobContext):
 
     # Now that ICE gathering is complete, send the offer
     offer = pc.localDescription
-    logger.debug(f"Local SDP offer:\n{offer.sdp}")
+    #logger.debug(f"Local SDP offer:\n{offer.sdp}")
 
     # Send the offer to Simli and receive the answer
     answer_sdp = await start_webrtc_session(
@@ -820,12 +814,12 @@ async def entrypoint(ctx: JobContext):
 
     # Set the remote description
     await pc.setRemoteDescription(answer)
-    logger.info(f"Remote SDP answer:\n{pc.remoteDescription.sdp}")
+    #logger.info(f"Remote SDP answer:\n{pc.remoteDescription.sdp}")
 
     # Monitor the ICE connection state
     @pc.on("iceconnectionstatechange")
     async def on_ice_connection_state_change():
-        logger.info(f"ICE connection state is {pc.iceConnectionState}")
+        #logger.info(f"ICE connection state is {pc.iceConnectionState}")
         if pc.iceConnectionState == "connected":
             logger.info("ICE connection successfully established")
         elif pc.iceConnectionState == "completed":
@@ -855,7 +849,7 @@ async def start_audio_to_video_session(api_key, face_id):
             if response.status == 200:
                 res_json = await response.json()
                 session_token = res_json.get("session_token")
-                logger.debug(f"Received session_token: {session_token}")
+                #logger.debug(f"Received session_token: {session_token}")
                 return session_token
             else:
                 logger.error(f"Error starting audio-to-video session: {response.status} - {response_text}")
@@ -876,7 +870,7 @@ async def start_webrtc_session(offer_sdp, offer_type, api_key, session_token):
             if response.status == 200:
                 res_json = await response.json()
                 answer_sdp = res_json.get("sdp")
-                logger.debug(f"Received answer SDP:\n{answer_sdp}")
+                #logger.debug(f"Received answer SDP:\n{answer_sdp}")
                 return answer_sdp
             else:
                 logger.error(f"Error starting WebRTC session: {response.status} - {response_text}")
