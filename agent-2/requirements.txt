@@ -3,4 +3,10 @@ livekit-plugins-openai
 livekit-plugins-deepgram
 livekit-plugins-silero
 livekit-plugins-cartesia
-python-dotenv   
+aiohttp
+numpy
+aiortc
+av
+opencv-python
+scipy
+python-dotenv

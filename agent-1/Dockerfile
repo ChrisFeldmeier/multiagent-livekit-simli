@@ -24,6 +24,14 @@ RUN apt-get update && \
     unzip \
     wget \
     procps \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1 \
+    ffmpeg \
+    gstreamer1.0-plugins-base \
+    libgstreamer1.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
 USER root
@@ -84,4 +92,4 @@ RUN python main.py download-files
 
 # Run the application.
 ENTRYPOINT ["python", "main.py"]
-CMD ["start"]
+CMD ["connect", "--room", "warp_demo"]

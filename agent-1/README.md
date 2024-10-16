@@ -17,6 +17,14 @@ It uses:
 5. add values for keys in `.env`
 6. `python main.py dev`
 
+## build docker file
+`docker build -t agent-1 .`
+
+## run docker build
+`docker run -t agent-1`
+
+python main.py connect --room warp_demo
+
 ## Run a client
 
 1. Choose the same LiveKit Cloud project you used in the agent's `.env` and click `Connect`
