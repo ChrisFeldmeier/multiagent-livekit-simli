@@ -39,7 +39,7 @@ import uuid
 load_dotenv()
 
 # Set global logging level to DEBUG for more comprehensive logs
-logging.basicConfig(level=logging.NOTSET)
+logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)  # Create a logger for this module
 
 dc = None
