@@ -1,5 +1,14 @@
 # Multi-agent meeting LiveKit server AND with Simli.com Avatars
 
+✅ Handling & Handshakes with Web RTC Implementation with Simli Avatar are working
+✅ Avatar Video stream ist working
+✅ Avatar Audio stream is working
+❌ LiveKit sent Audio to Simli (error on LiveKit to catch the TTS audio stream for sending to LiveKit, solution might be to clone the livekit python api oder build a wrapper)
+
+🪄 most of the magic is in the agent-1/main.py file
+
+![Description of the image](/meeting.jpeg)
+
 ## Run LiveKit server
 These commands will install [LiveKit server](https://github.com/livekit/livekit) on your machine and run it in dev mode. Dev mode uses a specific API key and secret pair.
 1. `brew install livekit`
@@ -15,17 +24,7 @@ Usually you'd run the agent(s) first and then start a session and the agent(s) w
 6. note the room name in your browser address bar: `http://localhost:3000/rooms/<room-name>`
 
 ## Run first Agent (With Simli Avatar)
-
-✅ Handling & Handshakes with Web RTC Implementation with Simli Avatar are working
-
-❌ Avatar Video Picture is not working at the moment, got a green broken screen 🙁
-The error is in this line https://github.com/ChrisFeldmeier/multiagent-livekit-simli/blob/bd484069a200a20e9ce735bc979a500a0c2de5bf/agent-1/main.py#L212 where I don't receive any video frame from Simli. (but gather_ice, SDP.. and connections to Simli are successfull...)
-The debug.log file in the root folder is the current debug log.
-
-🪄 most of the magic is in the agent-1/main.py file
-
-
-![Description of the image](/error.jpeg)
+`python main.py connect --room demoroom`
 
 ### How `main.py` Works
 
