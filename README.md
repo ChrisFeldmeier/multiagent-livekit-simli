@@ -1,8 +1,11 @@
 # Multi-agent meeting LiveKit server AND with Simli.com Avatars
 
 ✅ Handling & Handshakes with Web RTC Implementation with Simli Avatar are working
+
 ✅ Avatar Video stream ist working
+
 ✅ Avatar Audio stream is working
+
 ❌ LiveKit sent Audio to Simli (error on LiveKit to catch the TTS audio stream for sending to LiveKit, solution might be to clone the livekit python api oder build a wrapper)
 
 🪄 most of the magic is in the agent-1/main.py file
