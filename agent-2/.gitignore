@@ -3,9 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-_agent-2/
-_testing-client-simli-version
-
 # C extensions
 *.so
 
