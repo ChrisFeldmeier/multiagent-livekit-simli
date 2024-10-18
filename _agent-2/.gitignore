@@ -3,9 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-_agent-2/
-_testing-client-simli-version
-
 # C extensions
 *.so
 
@@ -28,8 +25,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-_trash/
-_trash/*
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
